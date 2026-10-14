@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام التشخيص المبدئي للأمراض الجلدية</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            background: #fff;
+            padding: 35px;
+            border-radius: 14px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h2 {
+            color: #1e3c72;
+            margin-bottom: 8px;
+        }
+
+        p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .custom-file-upload {
+            border: 2px dashed #007bff;
+            display: inline-block;
+            padding: 14px 20px;
+            cursor: pointer;
+            border-radius: 8px;
+            color: #007bff;
+            font-weight: bold;
+            width: 85%;
+            box-sizing: border-box;
+            transition: 0.2s;
+        }
+
+        .custom-file-upload:hover {
+            background-color: #eef6ff;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        #preview {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background-color: #1e3c72;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background-color: #162b52;
+        }
+
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+            display: none;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .results-box {
+            margin-top: 25px;
+            text-align: right;
+            display: none;
+        }
+
+        .top-match {
+            background: #eef9f1;
+            border-right: 5px solid #28a745;
+            padding: 15px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .top-match h3 {
+            margin: 0 0 5px 0;
+            color: #1e7e34;
+            font-size: 18px;
+        }
+
+        .top-match p {
+            margin: 0;
+            color: #444;
+            font-size: 13px;
+        }
+
+        .progress-item {
+            margin-bottom: 12px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .progress-bar-bg {
+            background: #e9ecef;
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            background: #007bff;
+            height: 100%;
+            width: 0%;
+            transition: width 0.6s ease;
+        }
+
+        .disclaimer {
+            margin-top: 25px;
+            background: #fff3cd;
+            border: 1px solid #ffeeba;
+            color: #856404;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>الفحص المبدئي للأمراض الجلدية</h2>
+        <p>ارفع صورة الإصابة للحصول على تحليل مبدئي موثوق</p>
+
+        <label class="custom-file-upload">
+            <input type="file" id="imageInput" accept="image/*" onchange="previewImage()">
+            اختر صورة للإصابة
+        </label>
+
+        <img id="preview" alt="معاينة الصورة">
+        <button onclick="uploadImage()">بدء التحليل</button>
+        <div class="loader" id="loader"></div>
+
+        <div class="results-box" id="resultsBox">
+            <div class="top-match">
+                <h3 id="topName"></h3>
+                <p id="topDesc"></p>
+            </div>
+
+            <h4 style="margin-bottom: 10px; color: #444;">أعلى 3 احتمالات مرشحة:</h4>
+            <div id="progressList"></div>
+
+            <div class="disclaimer">
+                ⚠️ <strong>تنويه طبي هام:</strong> هذا النظام أداة مساعدة تعتمد على الذكاء الاصطناعي للفحص المبدئي فقط،
+                ولا يعتبر تشخيصاً طبياً نائياً ولا يغني عن استشارة الطبيب المختص.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const previewImage = () => {
+            const fileInput = document.getElementById('imageInput');
+            const preview = document.getElementById('preview');
+            document.getElementById('resultsBox').style.display = 'none';
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        };
+
+        async function uploadImage() {
+            const fileInput = document.getElementById('imageInput');
+            const loader = document.getElementById('loader');
+            const resultsBox = document.getElementById('resultsBox');
+            const progressList = document.getElementById('progressList');
+
+            if (fileInput.files.length === 0) {
+                alert("الرجاء اختيار صورة أولاً");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', fileInput.files[0]);
+
+            resultsBox.style.display = 'none';
+            loader.style.display = 'block';
+
+            try {
+                const response = await fetch('/predict', { method: 'POST', body: formData });
+                const data = await response.json();
+                loader.style.display = 'none';
+
+                if (data.error) {
+                    alert(data.error);
+                    return;
+                }
+
+                // عرض النتيجة الرئيسية
+                const top = data.results[0];
+                document.getElementById('topName').innerText = `التشخيص المرجح: ${top.name} (${top.confidence}%)`;
+                document.getElementById('topDesc').innerText = top.desc;
+
+                // عرض أشرطة التقدم لأعلى 3 احتمالات
+                progressList.innerHTML = '';
+                data.results.forEach((item, index) => {
+                    const color = index === 0 ? '#28a745' : '#007bff';
+                    progressList.innerHTML += `
+                        <div class="progress-item">
+                            <div class="progress-label">
+                                <span>${item.name}</span>
+                                <span>${item.confidence}%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" style="width: ${item.confidence}%; background: ${color};"></div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                resultsBox.style.display = 'block';
+            } catch (err) {
+                loader.style.display = 'none';
+                alert("حدث خطأ أثناء الاتصال بالسيرفر");
+            }
+        }
+    </script>
+</body>
+
+</html>
