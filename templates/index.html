@@ -7,241 +7,384 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <title>نظام التشخيص المبدئي للأمراض الجلدية</title>
     <style>
+        /* إعدادات الصفحة العامة */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f4f8;
-            color: #333;
+            background-color: #f4f7f9;
+            color: #2c3e50;
             margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
+            padding: 0;
+            direction: rtl;
         }
 
-        .container {
-            background: #fff;
-            padding: 35px;
-            border-radius: 14px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            max-width: 550px;
-            width: 100%;
+        /* الهيدر العلوي */
+        .app-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 25px 20px;
             text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        h2 {
-            color: #1e3c72;
+        .app-header h1 {
+            margin: 0 0 8px 0;
+            font-size: 1.8rem;
+        }
+
+        .app-header p {
+            margin: 0;
+            opacity: 0.85;
+            font-size: 0.95rem;
+        }
+
+        /* تقسيم الداشبورد بعرض الشاشة */
+        .main-dashboard {
+            max-width: 1250px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* عمودين متساويين */
+            gap: 25px;
+            align-items: start;
+        }
+
+        /* الكروت العامة */
+        .card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f5;
+        }
+
+        .card-header h3 {
+            margin: 0 0 6px 0;
+            color: #1a252f;
+        }
+
+        .card-header p {
+            margin: 0 0 20px 0;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+
+        /* منطقة رفع الصور */
+        .upload-area {
+            border: 2px dashed #3498db;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            background-color: #f8fbfe;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            background-color: #eef6fd;
+            border-color: #2980b9;
+        }
+
+        .upload-icon {
+            font-size: 2.5rem;
             margin-bottom: 8px;
         }
 
-        p {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-
-        .custom-file-upload {
-            border: 2px dashed #007bff;
-            display: inline-block;
-            padding: 14px 20px;
+        .upload-label {
             cursor: pointer;
-            border-radius: 8px;
-            color: #007bff;
-            font-weight: bold;
-            width: 85%;
-            box-sizing: border-box;
-            transition: 0.2s;
+            display: block;
+            font-weight: 600;
+            color: #2980b9;
         }
 
-        .custom-file-upload:hover {
-            background-color: #eef6ff;
+        /* معاينة الصور */
+        .image-preview-wrapper {
+            text-align: center;
+            margin: 20px 0;
         }
 
-        input[type="file"] {
-            display: none;
-        }
-
-        #preview {
+        .image-preview-wrapper img {
             max-width: 100%;
-            height: auto;
+            max-height: 280px;
             border-radius: 8px;
-            margin: 15px 0;
-            display: none;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        button {
+        /* الأزرار */
+        .btn-primary,
+        .btn-success {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-primary {
             background-color: #1e3c72;
             color: white;
-            border: none;
-            padding: 12px 20px;
+        }
+
+        .btn-primary:hover {
+            background-color: #2a5298;
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #219150;
+        }
+
+        /* حالة الانتظار الكرت الأيسر */
+        .placeholder-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #95a5a6;
+        }
+
+        .placeholder-icon {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+
+        /* تنسيق التقرير للـ PDF والموقع */
+        .report-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .report-title {
+            text-align: center;
+            color: #1a365d;
+            border-bottom: 2px solid #edf2f7;
+            padding-bottom: 10px;
+            margin-top: 0;
+            font-size: 1.3rem;
+        }
+
+        .report-image-box {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .report-image-box img {
+            max-width: 100%;
+            max-height: 160px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .advice-box {
+            margin-top: 15px;
+            padding: 12px 15px;
+            background-color: #eef9ff;
+            border-right: 4px solid #3182ce;
             border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            width: 100%;
-            transition: 0.2s;
         }
 
-        button:hover {
-            background-color: #162b52;
+        .advice-box h4 {
+            margin: 0 0 8px 0;
+            color: #2b6cb0;
         }
 
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid #007bff;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-            display: none;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .results-box {
-            margin-top: 25px;
-            text-align: right;
-            display: none;
-        }
-
-        .top-match {
-            background: #eef9f1;
-            border-right: 5px solid #28a745;
-            padding: 15px;
+        .disclaimer-box {
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #fffaf0;
+            border: 1px solid #feebc8;
             border-radius: 6px;
+            font-size: 0.85rem;
+            color: #744210;
+        }
+
+        .pdf-btn-wrapper {
+            margin-top: 20px;
+        }
+
+        /* جعل الصفحة تجاوبية للشارشات الصغيرة والموبايل */
+        @media (max-width: 850px) {
+            .main-dashboard {
+                grid-template-columns: 1fr;
+                /* يتحول لعمود واحد في الشاشات الصغيرة */
+            }
+        }
+
+        /* تنسيقات أشرطة الاحتمالات (Progress Bars) */
+        .progress-list {
+            margin-top: 15px;
             margin-bottom: 20px;
         }
 
-        .top-match h3 {
-            margin: 0 0 5px 0;
-            color: #1e7e34;
-            font-size: 18px;
-        }
-
-        .top-match p {
-            margin: 0;
-            color: #444;
-            font-size: 13px;
-        }
-
         .progress-item {
-            margin-bottom: 12px;
+            margin-bottom: 14px;
         }
 
         .progress-label {
             display: flex;
             justify-content: space-between;
-            font-size: 13px;
+            font-size: 0.9rem;
             font-weight: bold;
-            margin-bottom: 4px;
+            color: #2c3e50;
+            margin-bottom: 6px;
         }
 
         .progress-bar-bg {
-            background: #e9ecef;
-            border-radius: 10px;
+            width: 100%;
             height: 10px;
+            background-color: #e9ecef;
+            border-radius: 6px;
             overflow: hidden;
         }
 
         .progress-bar-fill {
-            background: #007bff;
             height: 100%;
-            width: 0%;
-            transition: width 0.6s ease;
+            border-radius: 6px;
+            transition: width 0.8s ease-in-out;
         }
 
-        .disclaimer {
-            margin-top: 25px;
-            background: #fff3cd;
-            border: 1px solid #ffeeba;
-            color: #856404;
-            padding: 12px;
-            border-radius: 6px;
-            font-size: 12px;
+        /* تنسيق الفوتر أسفل الموقع */
+        .app-footer {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: #e2e8f0;
+            text-align: center;
+            padding: 20px 15px;
+            margin-top: 50px;
+            border-top: 3px solid #3b82f6;
+            font-size: 0.9rem;
+        }
+
+        .footer-container p {
+            margin: 6px 0;
             line-height: 1.5;
+        }
+
+        .copyright {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        .created-by {
+            font-weight: 500;
+            color: #f8fafc;
+            direction: ltr;
+            /* لعرض الأسماء الإنجليزية بشكل مضبوط من الشمال لليمين */
+        }
+
+        .created-by span {
+            color: #60a5fa;
+            font-weight: bold;
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
-        <h2>الفحص المبدئي للأمراض الجلدية</h2>
-        <p>ارفع صورة الإصابة للحصول على تحليل مبدئي موثوق</p>
-
-        <label class="custom-file-upload">
-            <input type="file" id="imageInput" accept="image/*" onchange="previewImage()">
-            اختر صورة للإصابة
-        </label>
-
-        <img id="preview" alt="معاينة الصورة">
-        <button onclick="uploadImage()">بدء التحليل</button>
-        <div class="loader" id="loader"></div>
-
-        <!-- صندوق النتيجة بالكامل -->
-        <div class="results-box" id="resultsBox">
-
-            <!-- الحاوية اللي هتتصور وتتحول لـ PDF -->
-            <div id="report-content" style="background-color: #fff; padding: 20px; border-radius: 8px; direction: rtl;">
-
-                <!-- عنوان التقرير -->
-                <h2
-                    style="text-align: center; color: #1a365d; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">
-                    تقرير الفحص المبدئي للأمراض الجلدية</h2>
-
-                <!-- الصورة المرفوعة (هتظهر هنا جوه الـ PDF) -->
-                <div style="text-align: center; margin-bottom: 20px;">
-                    <img id="pdf-image" src="" alt="صورة الفحص"
-                        style="max-width: 100%; max-height: 160px; border-radius: 8px; border: 1px solid #ccc; display: none; margin-bottom: 10px;">
-                </div>
-
-                <!-- النتيجة -->
-                <div class="top-match">
-                    <h3 id="topName"></h3>
-                    <p id="topDesc"></p>
-                </div>
-
-                <h4 style="margin-bottom: 10px; color: #444;">أعلى 3 احتمالات مرشحة:</h4>
-                <div id="progressList"></div>
-
-                <!-- قسم الإرشادات والنصائح (هيظهر تلقائي حسب المرض) -->
-                <div id="advice-section"
-                    style="margin-top: 20px; padding: 15px; background-color: #e8f4f8; border-right: 4px solid #3498db; border-radius: 4px; display: none;">
-                    <h4 style="color: #2980b9; margin-top: 0; margin-bottom: 10px;">💡 إرشادات طبية مقترحة:</h4>
-                    <ul id="advice-list" style="margin-bottom: 0; padding-right: 20px; line-height: 1.6;"></ul>
-                </div>
-
-                <div class="disclaimer"
-                    style="margin-top: 20px; padding: 10px; background-color: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px;">
-                    ⚠️ <strong>تنويه طبي هام:</strong> هذا النظام أداة مساعدة تعتمد على الذكاء الاصطناعي للفحص المبدئي
-                    فقط ولا يعتبر تشخيصاً طبياً نهائياً ولا يغني عن استشارة الطبيب المختص.
-                </div>
-            </div>
-            <!-- نهاية حاوية الـ PDF -->
-
-            <!-- زرار التحميل -->
-            <!-- الزرار الصح اللي هنسيبه (لاحظ إضافة display: none) -->
-            <div id="pdfButtonContainer" style="text-align: center; margin-top: 20px; display: none;">
-                <button id="downloadPdfBtn"
-                    style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-family: inherit;"
-                    onclick="generatePDF()">
-                    📥 تحميل التقرير (PDF)
-                </button>
-            </div>
-
+    <header class="app-header">
+        <div class="header-container">
+            <h1>🩺 نظام التشخيص المبدئي للأمراض الجلدية</h1>
+            <p>تحليل ذكي مدعوم بالتقاط الصور والذكاء الاصطناعي</p>
         </div>
+    </header>
 
-    </div>
-    </div>
-    </div>
+    <main class="main-dashboard">
+        <!-- كارت رفع الصورة (الجانب الأيمن) -->
+        <section class="card upload-card">
+            <div class="card-header">
+                <h3>📸 رفع صورة الإصابة</h3>
+                <p>اختر صورة واضحة ومباشرة للمنطقة الجلدية المراد فحصها</p>
+            </div>
+
+            <div class="upload-area">
+                <input type="file" id="imageInput" accept="image/*" onchange="previewImage()" hidden>
+                <label for="imageInput" class="upload-label">
+                    <div class="upload-icon">📁</div>
+                    <span>اضغط هنا لاختيار صورة من جهازك</span>
+                </label>
+            </div>
+
+            <div class="image-preview-wrapper">
+                <img id="preview" src="" alt="معاينة الصورة" style="display: none;">
+            </div>
+
+            <button class="btn-primary" onclick="uploadImage()">
+                <span>⚡ بدء التحليل المبدئي</span>
+            </button>
+
+            <div id="loader" class="loader" style="display: none;">
+                <div class="spinner"></div>
+                <p>جاري تحليل الصورة بواسطة النموذج...</p>
+            </div>
+        </section>
+
+        <!-- كارت النتيجة والتقرير (الجانب الأيسر) -->
+        <section class="card results-card">
+            <!-- صندوق النتيجة اللي هيتحول لـ PDF -->
+            <div class="results-box" id="resultsBox" style="display: none;">
+
+                <!-- الحاوية المخصصة للـ PDF -->
+                <div id="report-content" class="report-container">
+                    <h2 class="report-title">تقرير الفحص المبدئي للأمراض الجلدية</h2>
+
+                    <div class="report-image-box">
+                        <img id="pdf-image" src="" alt="صورة الفحص" style="display: none;">
+                    </div>
+
+                    <div class="top-match">
+                        <h3 id="topName"></h3>
+                        <p id="topDesc"></p>
+                    </div>
+
+                    <h4 class="section-subtitle">أعلى 3 احتمالات مرشحة:</h4>
+                    <div id="progressList" class="progress-list"></div>
+
+                    <div id="advice-section" class="advice-box" style="display: none;">
+                        <h4>💡 إرشادات طبية مقترحة:</h4>
+                        <ul id="advice-list"></ul>
+                    </div>
+
+                    <div class="disclaimer-box">
+                        ⚠️ <strong>تنويه طبي هام:</strong> هذا النظام أداة مساعدة تعتمد على الذكاء الاصطناعي للفحص
+                        المبدئي فقط ولا يعتبر تشخيصاً طبياً نهائياً ولا يغني عن استشارة الطبيب المختص.
+                    </div>
+                </div>
+
+                <!-- زرار تحميل الـ PDF -->
+                <div id="pdfButtonContainer" class="pdf-btn-wrapper" style="display: none;">
+                    <button id="downloadPdfBtn" class="btn-success" onclick="generatePDF()">
+                        📥 تحميل التقرير (PDF)
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- شكل افتراضي قبل إجراء التحليل -->
+            <div id="placeholderState" class="placeholder-state">
+                <div class="placeholder-icon">📋</div>
+                <h3>النتائج ستظهر هنا</h3>
+                <p>قم برفع صورة واضغط على "بدء التحليل" لعرض التقرير الطبي والنسب المئوية.</p>
+            </div>
+        </section>
+    </main>
+    <!-- فوتر حقوق الملكية وفريق العمل -->
+    <footer class="app-footer">
+        <div class="footer-container">
+            <p class="copyright">جميع الحقوق محفوظة © 2026 | نظام التشخيص المبدئي للأمراض الجلدية</p>
+            <p class="created-by">
+                Created & Developed by:
+                <span>Eng. Mohamed Hatem</span> |
+                <span>Mohamed Reda</span> |
+                <span>Omar Hassan</span>
+            </p>
+        </div>
+    </footer>
 
     <script>
         const previewImage = () => {
@@ -315,6 +458,7 @@
 
                 resultsBox.style.display = 'block';
                 document.getElementById('pdfButtonContainer').style.display = 'block';
+                document.getElementById('placeholderState').style.display = 'none';
                 // --- كود الإرشادات الطبية ---
                 const diseaseAdvice = {
                     'NV': 'مراقبة الشامة بانتظام وملاحظة أي تغير في الحجم أو اللون. يُنصح باستخدام واقي الشمس تجنباً للالتهابات.',
