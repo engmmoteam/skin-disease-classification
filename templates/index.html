@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <title>نظام التشخيص المبدئي للأمراض الجلدية</title>
     <style>
         body {
@@ -185,20 +186,61 @@
         <button onclick="uploadImage()">بدء التحليل</button>
         <div class="loader" id="loader"></div>
 
+        <!-- صندوق النتيجة بالكامل -->
         <div class="results-box" id="resultsBox">
-            <div class="top-match">
-                <h3 id="topName"></h3>
-                <p id="topDesc"></p>
+
+            <!-- الحاوية اللي هتتصور وتتحول لـ PDF -->
+            <div id="report-content" style="background-color: #fff; padding: 20px; border-radius: 8px; direction: rtl;">
+
+                <!-- عنوان التقرير -->
+                <h2
+                    style="text-align: center; color: #1a365d; border-bottom: 2px solid #eee; padding-bottom: 10px; margin-bottom: 20px;">
+                    تقرير الفحص المبدئي للأمراض الجلدية</h2>
+
+                <!-- الصورة المرفوعة (هتظهر هنا جوه الـ PDF) -->
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <img id="pdf-image" src="" alt="صورة الفحص"
+                        style="max-width: 100%; max-height: 160px; border-radius: 8px; border: 1px solid #ccc; display: none; margin-bottom: 10px;">
+                </div>
+
+                <!-- النتيجة -->
+                <div class="top-match">
+                    <h3 id="topName"></h3>
+                    <p id="topDesc"></p>
+                </div>
+
+                <h4 style="margin-bottom: 10px; color: #444;">أعلى 3 احتمالات مرشحة:</h4>
+                <div id="progressList"></div>
+
+                <!-- قسم الإرشادات والنصائح (هيظهر تلقائي حسب المرض) -->
+                <div id="advice-section"
+                    style="margin-top: 20px; padding: 15px; background-color: #e8f4f8; border-right: 4px solid #3498db; border-radius: 4px; display: none;">
+                    <h4 style="color: #2980b9; margin-top: 0; margin-bottom: 10px;">💡 إرشادات طبية مقترحة:</h4>
+                    <ul id="advice-list" style="margin-bottom: 0; padding-right: 20px; line-height: 1.6;"></ul>
+                </div>
+
+                <div class="disclaimer"
+                    style="margin-top: 20px; padding: 10px; background-color: #fff3cd; border: 1px solid #ffeeba; border-radius: 5px;">
+                    ⚠️ <strong>تنويه طبي هام:</strong> هذا النظام أداة مساعدة تعتمد على الذكاء الاصطناعي للفحص المبدئي
+                    فقط ولا يعتبر تشخيصاً طبياً نهائياً ولا يغني عن استشارة الطبيب المختص.
+                </div>
+            </div>
+            <!-- نهاية حاوية الـ PDF -->
+
+            <!-- زرار التحميل -->
+            <!-- الزرار الصح اللي هنسيبه (لاحظ إضافة display: none) -->
+            <div id="pdfButtonContainer" style="text-align: center; margin-top: 20px; display: none;">
+                <button id="downloadPdfBtn"
+                    style="padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; font-family: inherit;"
+                    onclick="generatePDF()">
+                    📥 تحميل التقرير (PDF)
+                </button>
             </div>
 
-            <h4 style="margin-bottom: 10px; color: #444;">أعلى 3 احتمالات مرشحة:</h4>
-            <div id="progressList"></div>
-
-            <div class="disclaimer">
-                ⚠️ <strong>تنويه طبي هام:</strong> هذا النظام أداة مساعدة تعتمد على الذكاء الاصطناعي للفحص المبدئي فقط،
-                ولا يعتبر تشخيصاً طبياً نائياً ولا يغني عن استشارة الطبيب المختص.
-            </div>
         </div>
+
+    </div>
+    </div>
     </div>
 
     <script>
@@ -206,6 +248,11 @@
             const fileInput = document.getElementById('imageInput');
             const preview = document.getElementById('preview');
             document.getElementById('resultsBox').style.display = 'none';
+            // حط السطور دي تحت كود عرض الصورة الأساسية
+            const pdfImage = document.getElementById('pdf-image');
+            // لو المتغير بتاع الصورة المرفوعة اسمه file مثلاً، سيب السطر ده زي ما هو:
+            pdfImage.src = URL.createObjectURL(fileInput.files[0]);
+            pdfImage.style.display = 'inline-block';
 
             if (fileInput.files && fileInput.files[0]) {
                 const reader = new FileReader();
@@ -267,11 +314,52 @@
                 });
 
                 resultsBox.style.display = 'block';
+                document.getElementById('pdfButtonContainer').style.display = 'block';
+                // --- كود الإرشادات الطبية ---
+                const diseaseAdvice = {
+                    'NV': 'مراقبة الشامة بانتظام وملاحظة أي تغير في الحجم أو اللون. يُنصح باستخدام واقي الشمس تجنباً للالتهابات.',
+                    'MEL': 'يجب التوجه فوراً لطبيب أمراض جلدية لإجراء فحص دقيق وخزعة. تجنب حك أو العبث بالمنطقة المصابة تماماً.',
+                    'BKL': 'في الغالب هي حالة حميدة وغير مقلقة، ولكن يُنصح بزيارة الطبيب للتأكيد. لا تحاول إزالتها بالطرق المنزلية.',
+                    'BCC': 'يجب استشارة الطبيب في أقرب وقت لتحديد خطة العلاج. تجنب التعرض للشمس تماماً في المنطقة المصابة.',
+                    'AKIEC': 'زيارة الطبيب ضرورية لأنها قد تتطور. احرص على استخدام واقي شمس قوي وتغطية المنطقة.',
+                    'VASC': 'غالباً حالة حميدة ولا تتطلب علاجاً إلا لأسباب تجميلية. استشر الطبيب إذا حدث نزيف.',
+                    'DF': 'حالة حميدة وشائعة تتمثل في عقدة صلبة، لا تتطلب قلقاً. إذا كانت تسبب حكة أو ألم، راجع الطبيب لإزالتها.'
+                };
+
+                let adviceText = "يُرجى المتابعة مع طبيب مختص للحصول على تشخيص دقيق وخطة علاج مناسبة.";
+
+                for (const [key, value] of Object.entries(diseaseAdvice)) {
+                    if (top.name.includes(key)) {
+                        adviceText = value;
+                        break;
+                    }
+                }
+
+                document.getElementById('advice-list').innerHTML = `<li>${adviceText}</li>`;
+                document.getElementById('advice-section').style.display = 'block';
+                // ---------------------------------
             } catch (err) {
                 loader.style.display = 'none';
                 alert("حدث خطأ أثناء الاتصال بالسيرفر");
             }
         }
+        const generatePDF = () => {
+            // السطر السحري: بيطلع الصفحة لفوق خالص قبل التحويل عشان مفيش حاجة تتقص أو تطلع فاضية
+            window.scrollTo(0, 0);
+
+            const reportElement = document.getElementById('report-content');
+
+            const options = {
+                margin: 0.2,
+                filename: 'Skin_Disease_Report.pdf',
+                image: { type: 'jpeg', quality: 1.0 },
+                html2canvas: { scale: 2, useCORS: true }, // شلنا الإعدادات اللي عملت الشاشة البيضاء
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+            };
+
+            // أمر التحويل
+            html2pdf().set(options).from(reportElement).save();
+        };
     </script>
 </body>
 
