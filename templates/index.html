@@ -282,6 +282,45 @@
             color: #60a5fa;
             font-weight: bold;
         }
+
+        /* تنسيق صناديق المعلومات والتحاليل والأدوية */
+        .info-box {
+            margin-top: 15px;
+            padding: 12px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .info-box h4 {
+            margin: 0 0 8px 0;
+            font-size: 0.95rem;
+        }
+
+        .info-box ul {
+            margin: 0;
+            padding-right: 20px;
+            line-height: 1.6;
+        }
+
+        /* صندوق الفحوصات (لون بنفسجي هادئ) */
+        .tests-box {
+            background-color: #f3f0ff;
+            border-right: 4px solid #7c3aed;
+        }
+
+        .tests-box h4 {
+            color: #6d28d9;
+        }
+
+        /* صندوق الأدوية والعناية (لون أخضر هادئ) */
+        .meds-box {
+            background-color: #f0fdf4;
+            border-right: 4px solid #16a34a;
+        }
+
+        .meds-box h4 {
+            color: #15803d;
+        }
     </style>
 </head>
 
@@ -348,6 +387,17 @@
                     <div id="advice-section" class="advice-box" style="display: none;">
                         <h4>💡 إرشادات طبية مقترحة:</h4>
                         <ul id="advice-list"></ul>
+                    </div>
+                    <!-- قسم الفحوصات والتحاليل التأكيدية -->
+                    <div id="tests-section" class="info-box tests-box" style="display: none;">
+                        <h4>🔬 الفحوصات والتحاليل التأكيدية المقترحة:</h4>
+                        <ul id="tests-list"></ul>
+                    </div>
+
+                    <!-- قسم العلاجات والعناية الموضعية المقترحة -->
+                    <div id="meds-section" class="info-box meds-box" style="display: none;">
+                        <h4>🧴 العلاجات والعناية الموضعية المبدئية:</h4>
+                        <ul id="meds-list"></ul>
                     </div>
 
                     <div class="disclaimer-box">
@@ -460,24 +510,111 @@
                 document.getElementById('pdfButtonContainer').style.display = 'block';
                 document.getElementById('placeholderState').style.display = 'none';
                 // --- كود الإرشادات الطبية ---
-                const diseaseAdvice = {
-                    'NV': 'مراقبة الشامة بانتظام وملاحظة أي تغير في الحجم أو اللون. يُنصح باستخدام واقي الشمس تجنباً للالتهابات.',
-                    'MEL': 'يجب التوجه فوراً لطبيب أمراض جلدية لإجراء فحص دقيق وخزعة. تجنب حك أو العبث بالمنطقة المصابة تماماً.',
-                    'BKL': 'في الغالب هي حالة حميدة وغير مقلقة، ولكن يُنصح بزيارة الطبيب للتأكيد. لا تحاول إزالتها بالطرق المنزلية.',
-                    'BCC': 'يجب استشارة الطبيب في أقرب وقت لتحديد خطة العلاج. تجنب التعرض للشمس تماماً في المنطقة المصابة.',
-                    'AKIEC': 'زيارة الطبيب ضرورية لأنها قد تتطور. احرص على استخدام واقي شمس قوي وتغطية المنطقة.',
-                    'VASC': 'غالباً حالة حميدة ولا تتطلب علاجاً إلا لأسباب تجميلية. استشر الطبيب إذا حدث نزيف.',
-                    'DF': 'حالة حميدة وشائعة تتمثل في عقدة صلبة، لا تتطلب قلقاً. إذا كانت تسبب حكة أو ألم، راجع الطبيب لإزالتها.'
+                // القاموس الطبي الشامل لكل مرض
+                const medicalDatabase = {
+                    'NV': {
+                        advice: 'مراقبة الشامة بانتظام وملاحظة أي تغير في الحجم أو اللون.',
+                        tests: [
+                            'فحص بالمناظير الجلدية (Dermoscopy) لدى الطبيب المختص.',
+                            'المتابعة الدورية كل 6 إلى 12 شهراً.'
+                        ],
+                        meds: [
+                            'استخدام واقي شمس واسع الطيف (SPF 50+) للوقاية.',
+                            'مرطبات ملطفة للبشرة (Emollients) عند وجود جفاف.'
+                        ]
+                    },
+                    'MEL': {
+                        advice: 'حالة تتطلب العرض الفوري والعاجل على طبيب أورام وجلدية.',
+                        tests: [
+                            'خزعة استئصالية (Excisional Biopsy) لتحليل النسيج.',
+                            'فحص دقيق بالمجهر الجلدي (Dermoscopy).'
+                        ],
+                        meds: [
+                            '⚠️ يمنع استخدام أي مراهم موضعية بدون استشارة الطبيب.',
+                            'العلاج يتحدد حصراً بعد نتيجة الخزعة (جراحي أو موجه).'
+                        ]
+                    },
+                    'BKL': {
+                        advice: 'آفة حميدة غالباً ولا تشكل خطورة، يمكن متابعتها.',
+                        tests: [
+                            'فحص سريري مباشر وفحص الفلورسنت عند الحاجة.',
+                            'خزعة جزيئية فقط في حال التباسها مع أورام أخرى.'
+                        ],
+                        meds: [
+                            'مراهم مرطبة وملطفة للجلد.',
+                            'مراهم مقشرة خفيفة تحتوي على (Salicylic Acid) تحت إشراف طبي.'
+                        ]
+                    },
+                    'BCC': {
+                        advice: 'ورم جلدي يستوجب التقييم الطبي لتحديد الخطة العلاجية.',
+                        tests: [
+                            'خزعة جلدية تأكيدية (Punch or Shave Biopsy).',
+                            'تقييم حواف الآفة السريرية.'
+                        ],
+                        meds: [
+                            'كريمات مناعية موضعية مثل (Imiquimod cream) بوصفة طبية فقط.',
+                            'استخدام واقيات الشمس بانتظام لحماية المناطق المحيطة.'
+                        ]
+                    },
+                    'AKIEC': {
+                        advice: 'تغيرات جلدية ما قبل سرطانية تحتاج علاجاً لمنع تطورها.',
+                        tests: [
+                            'فحص الجلد المجهري (Dermoscopic Assessment).',
+                            'خزعة من الأنسجة لتأكيد درجة التغير.'
+                        ],
+                        meds: [
+                            'جل موضعي مضاد للالتهاب مثل (Diclofenac gel) باستشارة طبية.',
+                            'كريمات الفلورويوراسيل (5-FU cream) تحت إشراف طبي مباشر.',
+                            'واقي شمس قوي وتغطية المنطقة المصابة.'
+                        ]
+                    },
+                    'VASC': {
+                        advice: 'آفات وعائية حميدة في الأوعية الدموية الجلدية.',
+                        tests: [
+                            'فحص الانضغاط الزجاجي (Diascopy Test).',
+                            'فحص الأوعية بالمجهر الجلدي.'
+                        ],
+                        meds: [
+                            'مراهم ملطفة ومضادة للحكة الخفيفة.',
+                            'تجنب الفرك أو الحك لمنع حدوث نزيف سطحي.'
+                        ]
+                    },
+                    'DF': {
+                        advice: 'عقدة ليفية حميدة وشائعة لا تتطلب القلق.',
+                        tests: [
+                            'فحص الانقراض السريري (Pinch Test).',
+                            'تأكيد تشخيصي بالمجهر الجلدي.'
+                        ],
+                        meds: [
+                            'كريمات مرطبة للبشرة.',
+                            'لا تتطلب مراهم علاجية إلا إذا كانت تسبب حكة أو ألم.'
+                        ]
+                    }
                 };
 
-                let adviceText = "يُرجى المتابعة مع طبيب مختص للحصول على تشخيص دقيق وخطة علاج مناسبة.";
+                // --- كود عرض البيانات في التقرير (يضاف داخل uploadImage بعد الحصول على النتيجة) ---
+                let currentInfo = medicalDatabase['NV']; // افتراضي
 
-                for (const [key, value] of Object.entries(diseaseAdvice)) {
+                for (const key of Object.keys(medicalDatabase)) {
                     if (top.name.includes(key)) {
-                        adviceText = value;
+                        currentInfo = medicalDatabase[key];
                         break;
                     }
                 }
+
+                // 1. عرض الإرشادات
+                document.getElementById('advice-list').innerHTML = `<li>${currentInfo.advice}</li>`;
+                document.getElementById('advice-section').style.display = 'block';
+
+                // 2. عرض الفحوصات والتحاليل
+                const testsListHtml = currentInfo.tests.map(test => `<li>${test}</li>`).join('');
+                document.getElementById('tests-list').innerHTML = testsListHtml;
+                document.getElementById('tests-section').style.display = 'block';
+
+                // 3. عرض الأدوية والمراهم
+                const medsListHtml = currentInfo.meds.map(med => `<li>${med}</li>`).join('');
+                document.getElementById('meds-list').innerHTML = medsListHtml;
+                document.getElementById('meds-section').style.display = 'block';
 
                 document.getElementById('advice-list').innerHTML = `<li>${adviceText}</li>`;
                 document.getElementById('advice-section').style.display = 'block';
