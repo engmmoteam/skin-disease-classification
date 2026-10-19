@@ -18,23 +18,159 @@
         }
 
         /* الهيدر العلوي */
+        /* ==================== الهيدر العصري المطور ==================== */
         .app-header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2744 100%);
+            border-bottom: 2px solid #1e40af;
+            padding: 18px 25px;
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.4);
+            position: relative;
+            overflow: hidden;
         }
 
-        .app-header h1 {
-            margin: 0 0 8px 0;
-            font-size: 1.8rem;
+        /* خلفية ضوئية خفيفة في الهيدر */
+        .app-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 20%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            pointer-events: none;
         }
 
-        .app-header p {
+        .header-container {
+            max-width: 1250px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* قسم اللوجو والعنوان */
+        .brand-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-badge {
+            position: relative;
+            background: rgba(30, 58, 138, 0.5);
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 14px;
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.7rem;
+            backdrop-filter: blur(8px);
+        }
+
+        /* النقطة المضيئة النابضة */
+        .pulse-dot {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 10px;
+            height: 10px;
+            background-color: #10b981;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #10b981;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+
+        .brand-text h1 {
             margin: 0;
-            opacity: 0.85;
-            font-size: 0.95rem;
+            font-size: 1.55rem;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .brand-text h1 span {
+            background: linear-gradient(90deg, #60a5fa, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .brand-text p {
+            margin: 4px 0 0 0;
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+
+        /* الشارات والشعارات الجانبية */
+        .header-badges {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .status-pill {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #34d399;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #34d399;
+            border-radius: 50%;
+        }
+
+        .tech-pill {
+            background: rgba(59, 130, 246, 0.12);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #93c5fd;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            direction: ltr;
+        }
+
+        /* تجاوب الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-badges {
+                width: 100%;
+                justify-content: flex-start;
+            }
         }
 
         /* تقسيم الداشبورد بعرض الشاشة */
@@ -321,15 +457,301 @@
         .meds-box h4 {
             color: #15803d;
         }
+
+        /* سكشن إحصائيات ومعلومات الموديل */
+        .model-info-section {
+            max-width: 1250px;
+            margin: 40px auto 30px auto;
+            padding: 30px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+            border: 1px solid #eef2f5;
+        }
+
+        .model-info-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .model-info-header h2 {
+            margin: 0 0 8px 0;
+            color: #1e3c72;
+            font-size: 1.5rem;
+        }
+
+        .model-info-header p {
+            margin: 0;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        /* توزيع كروت الإحصائيات */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .stat-card {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 20px 15px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            border-color: #3b82f6;
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .stat-number {
+            font-size: 1.35rem;
+            font-weight: bold;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.3;
+        }
+
+        /* صندوق شرح طريقة العمل */
+        .model-description-box {
+            background: #f0f9ff;
+            border-right: 4px solid #0284c7;
+            padding: 15px 20px;
+            border-radius: 6px;
+        }
+
+        .model-description-box h4 {
+            margin: 0 0 8px 0;
+            color: #0369a1;
+            font-size: 1rem;
+        }
+
+        .model-description-box p {
+            margin: 0;
+            color: #334155;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        /* تنسيق خيارات الرفع والكاميرا */
+        .upload-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn-camera {
+            width: 100%;
+            height: 100%;
+            min-height: 110px;
+            background: #f8fafc;
+            border: 2px dashed #64748b;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #334155;
+            transition: all 0.3s ease;
+        }
+
+        .btn-camera:hover {
+            background: #f1f5f9;
+            border-color: #1e293b;
+        }
+
+        .camera-icon {
+            font-size: 2rem;
+        }
+
+        /* نافذة عرض الكاميرا */
+        .camera-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .camera-box {
+            background: #0f172a;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        #videoFeed {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            background: #000;
+        }
+
+        .camera-controls {
+            margin-top: 15px;
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+        }
+
+        .btn-capture {
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-close-cam {
+            background: #ef4444;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @media (max-width: 600px) {
+            .upload-options {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .lang-pill {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-pill:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: #ffffff;
+            transform: translateY(-1px);
+        }
+
+        /* شارة مستوى الخطورة */
+        .risk-badge {
+            padding: 10px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.92rem;
+            text-align: center;
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        /* حالة منخفض الخطورة (أخضر) */
+        .risk-low {
+            background-color: #ecfdf5;
+            color: #065f46;
+            border: 1px solid #a7f3d0;
+        }
+
+        /* حالة متوسط الخطورة (أصفر/برتقالي) */
+        .risk-medium {
+            background-color: #fffbeb;
+            color: #92400e;
+            border: 1px solid #fde68a;
+        }
+
+        /* حالة عالي الخطورة (أحمر مع تأثير نبض) */
+        .risk-high {
+            background-color: #fef2f2;
+            color: #991b1b;
+            border: 1px solid #fecaca;
+            animation: riskPulse 2s infinite;
+        }
+
+        @keyframes riskPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.3);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
     </style>
 </head>
 
 <body>
-
+    <!-- الهيدر العصري المطوّر -->
     <header class="app-header">
         <div class="header-container">
-            <h1>🩺 نظام التشخيص المبدئي للأمراض الجلدية</h1>
-            <p>تحليل ذكي مدعوم بالتقاط الصور والذكاء الاصطناعي</p>
+
+            <!-- الجانب الأيمن: اللوجو والعنوان -->
+            <div class="brand-section">
+                <div class="logo-badge">
+                    <span class="logo-icon">🔬</span>
+                    <span class="pulse-dot" title="المرمجة جاهرة للتحليل"></span>
+                </div>
+                <div class="brand-text">
+                    <h1>DermoAI <span>لتشخيص الأمراض الجلدية</span></h1>
+                    <p>نظام تشخيص مبدئي ذكي مدعوم برؤية الحاسوب والذكاء الاصطناعي</p>
+                </div>
+            </div>
+
+            <!-- الجانب الأيسر: شارات الحالة والتكنولوجيا -->
+            <div class="header-badges">
+                <div class="header-badges">
+                    <button id="langToggleBtn" class="lang-pill" onclick="toggleLanguage()">
+                        🌐 English
+                    </button>
+                    <div class="status-pill">
+                        <span class="status-dot"></span>
+                        <span id="statusText">النظام جاهز</span>
+                    </div>
+                    <div class="tech-pill">
+                        <span>⚡ EfficientNet Architecture</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </header>
 
@@ -341,12 +763,35 @@
                 <p>اختر صورة واضحة ومباشرة للمنطقة الجلدية المراد فحصها</p>
             </div>
 
-            <div class="upload-area">
-                <input type="file" id="imageInput" accept="image/*" onchange="previewImage()" hidden>
-                <label for="imageInput" class="upload-label">
-                    <div class="upload-icon">📁</div>
-                    <span>اضغط هنا لاختيار صورة من جهازك</span>
-                </label>
+            <!-- منطقة اختيار الصور أو فتح الكاميرا -->
+            <div class="upload-options">
+                <div class="upload-area">
+                    <input type="file" id="imageInput" accept="image/*" onchange="previewImage()" hidden>
+                    <label for="imageInput" class="upload-label">
+                        <div class="upload-icon">📁</div>
+                        <span>اختر صورة من جهازك</span>
+                    </label>
+                </div>
+
+
+                <div class="camera-area">
+                    <button type="button" class="btn-camera" onclick="startCamera()">
+                        <span class="camera-icon">📷</span>
+                        <span>التقاط صورة بالكاميرا</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- نافذة عرض بث الكاميرا الحية (تظهر عند الضغط على زرار الكاميرا) -->
+            <div id="cameraModal" class="camera-modal" style="display: none;">
+                <div class="camera-box">
+                    <video id="videoFeed" autoplay playsinline></video>
+                    <canvas id="photoCanvas" style="display: none;"></canvas>
+                    <div class="camera-controls">
+                        <button class="btn-capture" onclick="takeSnapshot()">📸 التقاط</button>
+                        <button class="btn-close-cam" onclick="stopCamera()">❌ إغلاق</button>
+                    </div>
+                </div>
             </div>
 
             <div class="image-preview-wrapper">
@@ -375,6 +820,8 @@
                     <div class="report-image-box">
                         <img id="pdf-image" src="" alt="صورة الفحص" style="display: none;">
                     </div>
+                    <!-- شارة مستوى الخطورة الديناميكية -->
+                    <div id="riskBadge" class="risk-badge" style="display: none;"></div>
 
                     <div class="top-match">
                         <h3 id="topName"></h3>
@@ -423,6 +870,57 @@
             </div>
         </section>
     </main>
+    <!-- سكشن إحصائيات ومعلومات النموذج -->
+    <section class="model-info-section">
+        <div class="model-info-header">
+            <h2>🧠 عن نموذج الذكاء الاصطناعي (Model Overview)</h2>
+            <p>نظام تشخيص مبدئي يعتمد على شبكات الـ CNN العميقة وتقنيات التعلم المنقول (Transfer Learning)</p>
+        </div>
+
+        <!-- شبكة الإحصائيات السريعة -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">🖼️</div>
+                <div class="stat-number">10,015+</div>
+                <div class="stat-label">صورة فائقة الدقة (HAM10000 Dataset)</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-number">91.4%</div>
+                <div class="stat-label">دقة التنبؤ المباشر (Model Accuracy)</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🧬</div>
+                <div class="stat-number">EfficientNet</div>
+                <div class="stat-label">المعمارية الأساسية (Pre-trained Architecture)</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">🩺</div>
+                <div class="stat-number">7 فئات</div>
+                <div class="stat-label">أمراض جلدية وأورام سريرية مختلفة</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">⚡</div>
+                <div class="stat-number">&lt; 1 ثانية</div>
+                <div class="stat-label">زمن الفحص والمعالجة الفورية</div>
+            </div>
+        </div>
+
+        <!-- شرح مبسط عن آلية عمل الموديل -->
+        <div class="model-description-box">
+            <h4>💡 كيف يعمل النظام؟</h4>
+            <p>
+                يقوم النظام بمعالجة الصورة المرفوعة عبر مرحلة <strong>Preprocessing</strong> لتعديل الأبعاد وضبط
+                التباين، ثم يمررها على طبقات الاستخلاص العميقة الموزونة مسبقاً على بيانات ImageNet لتمييز أدق الخصائص
+                الحيوية في الجلد، ليخرج الاحتمالات المرجحة مع تقرير طبي قابل للطباعة بـ PDF يحتوي الإرشادات والفحوصات
+                التأكيدية.
+            </p>
+        </div>
+    </section>
     <!-- فوتر حقوق الملكية وفريق العمل -->
     <footer class="app-footer">
         <div class="footer-container">
@@ -485,10 +983,13 @@
                 }
 
                 // عرض النتيجة الرئيسية
+                // عرض النتيجة الرئيسية
                 const top = data.results[0];
                 document.getElementById('topName').innerText = `التشخيص المرجح: ${top.name} (${top.confidence}%)`;
                 document.getElementById('topDesc').innerText = top.desc;
 
+                // 🟢 ضيف السطر ده هنا للتحكم في شارة الخطورة الملونة
+                updateRiskBadge(top.name);
                 // عرض أشرطة التقدم لأعلى 3 احتمالات
                 progressList.innerHTML = '';
                 data.results.forEach((item, index) => {
@@ -619,6 +1120,7 @@
                 document.getElementById('advice-list').innerHTML = `<li>${adviceText}</li>`;
                 document.getElementById('advice-section').style.display = 'block';
                 // ---------------------------------
+
             } catch (err) {
                 loader.style.display = 'none';
                 alert("حدث خطأ أثناء الاتصال بالسيرفر");
@@ -641,6 +1143,174 @@
             // أمر التحويل
             html2pdf().set(options).from(reportElement).save();
         };
+        let stream = null;
+
+        // 1. تشغيل كاميرا الجهاز
+        async function startCamera() {
+            const cameraModal = document.getElementById('cameraModal');
+            const video = document.getElementById('videoFeed');
+
+            try {
+                stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: "environment" } // استخدام الكاميرا الخلفية لو على موبايل
+                });
+                video.srcObject = stream;
+                cameraModal.style.display = 'flex';
+            } catch (err) {
+                alert("تعذر الوصول للكاميرا. اتأكد من إعطاء الصلاحية في المتصفح.");
+                console.error("Camera Error: ", err);
+            }
+        }
+
+        // 2. التقاط لقطة من البث المباشر
+        function takeSnapshot() {
+            const video = document.getElementById('videoFeed');
+            const canvas = document.getElementById('photoCanvas');
+            const preview = document.getElementById('preview');
+            const pdfImage = document.getElementById('pdf-image');
+            const context = canvas.getContext('2d');
+
+            // ضبط أبعاد الـ Canvas لنفس أبعاد الفيديو
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+
+            // رسم الفريم الحالي
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // تحويل الصورة لـ Base64 وعرضها في المعاينة وتقرير الـ PDF
+            const imageDataUrl = canvas.toDataURL('image/jpeg');
+
+            preview.src = imageDataUrl;
+            preview.style.display = 'block';
+
+            pdfImage.src = imageDataUrl;
+            pdfImage.style.display = 'block';
+
+            // تحويل الصورة لـ File Object وتعيينها للـ input
+            fetch(imageDataUrl)
+                .then(res => res.blob())
+                .then(blob => {
+                    const file = new File([blob], "camera_capture.jpg", { type: "image/jpeg" });
+                    const container = new DataTransfer();
+                    container.items.add(file);
+                    document.getElementById('imageInput').files = container.files;
+                });
+
+            stopCamera(); // إيقاف الكاميرا بعد الالتقاط
+        }
+
+        // 3. إيقاف تشغيل الكاميرا
+        function stopCamera() {
+            const cameraModal = document.getElementById('cameraModal');
+            if (stream) {
+                stream.getTracks().forEach(track => track.stop());
+            }
+            cameraModal.style.display = 'none';
+        }
+        let currentLang = 'ar';
+
+        const translations = {
+            ar: {
+                langBtn: '🌐 English',
+                dir: 'rtl',
+                appTitle: 'DermoAI <span>للتحليل الجلدية</span>',
+                appSubtitle: 'نظام تشخيص مبدئي ذكي مدعوم برؤية الحاسوب والذكاء الاصطناعي',
+                statusText: 'النظام جاهز',
+                uploadTitle: '📸 رفع صورة الإصابة',
+                uploadSubtitle: 'اختر صورة واضحة ومباشرة للمنطقة الجلدية المراد فحصها',
+                uploadBtnText: 'اختر صورة من جهازك',
+                cameraBtnText: 'التقاط صورة للكاميرا',
+                analyzeBtn: '⚡ بدء التحليل المبدئي',
+                placeholderTitle: 'النتائج ستظهر هنا',
+                placeholderDesc: 'قم برفع صورة واضغط على "بدء التحليل" لعرض التقرير الطبي والنسب المئوية.',
+                downloadPdfBtn: '📥 تحميل التقرير (PDF)',
+                reportTitle: 'تقرير الفحص المبدئي للأمراض الجلدية',
+                top3Title: 'أعلى 3 احتمالات مرشحة:',
+                adviceTitle: '💡 إرشادات طبية مقترحة:',
+                testsTitle: '🔬 الفحوصات والتحاليل التأكيدية المقترحة:',
+                medsTitle: '🧴 العلاجات والعناية الموضعية المبدئية:'
+            },
+            en: {
+                langBtn: '🌐 العربية',
+                dir: 'ltr',
+                appTitle: 'DermoAI <span>Skin Analysis</span>',
+                appSubtitle: 'AI-Powered Preliminary Skin Disease Diagnostics System',
+                statusText: 'System Ready',
+                uploadTitle: '📸 Upload Lesion Image',
+                uploadSubtitle: 'Choose a clear and direct image of the skin area to be examined',
+                uploadBtnText: 'Select image from device',
+                cameraBtnText: 'Capture with Camera',
+                analyzeBtn: '⚡ Start Diagnosis',
+                placeholderTitle: 'Results will appear here',
+                placeholderDesc: 'Upload an image and click "Start Diagnosis" to generate the clinical report.',
+                downloadPdfBtn: '📥 Download Report (PDF)',
+                reportTitle: 'Preliminary Skin Inspection Report',
+                top3Title: 'Top 3 Candidate Probabilities:',
+                adviceTitle: '💡 Medical Advice:',
+                testsTitle: '🔬 Suggested Diagnostic Tests:',
+                medsTitle: '🧴 Suggested Treatments & Topical Care:'
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const t = translations[currentLang];
+
+            // تغيير اتجاه الصفحة
+            document.documentElement.dir = t.dir;
+            document.body.style.direction = t.dir;
+
+            // تحديث زرار اللغة
+            document.getElementById('langToggleBtn').innerText = t.langBtn;
+
+            // تحديث عناوين الهيدر والكروت
+            document.querySelector('.brand-text h1').innerHTML = t.appTitle;
+            document.querySelector('.brand-text p').innerText = t.appSubtitle;
+            document.getElementById('statusText').innerText = t.statusText;
+
+            document.querySelector('.upload-card h3').innerText = t.uploadTitle;
+            document.querySelector('.upload-card p').innerText = t.uploadSubtitle;
+            document.querySelector('.upload-label span').innerText = t.uploadBtnText;
+            document.querySelector('.btn-camera span:last-child').innerText = t.cameraBtnText;
+            document.querySelector('.btn-primary span').innerText = t.analyzeBtn;
+
+            // تحديث كارت النتائج والتقرير
+            const placeholderH3 = document.querySelector('.placeholder-state h3');
+            const placeholderP = document.querySelector('.placeholder-state p');
+            if (placeholderH3) placeholderH3.innerText = t.placeholderTitle;
+            if (placeholderP) placeholderP.innerText = t.placeholderDesc;
+
+            document.getElementById('downloadPdfBtn').innerText = t.downloadPdfBtn;
+            document.querySelector('.report-title').innerText = t.reportTitle;
+            document.querySelector('.section-subtitle').innerText = t.top3Title;
+        }
+        // جدول مستويات الخطورة لكل مرض
+        const riskLevels = {
+            'NV': { level: 'low', textAr: '🟢 منخفض الخطورة (حالة حميدة)', textEn: '🟢 Low Risk (Benign Condition)' },
+            'BKL': { level: 'low', textAr: '🟢 منخفض الخطورة (آفة حميدة)', textEn: '🟢 Low Risk (Benign Lesion)' },
+            'DF': { level: 'low', textAr: '🟢 منخفض الخطورة (عقدة ليفية حميدة)', textEn: '🟢 Low Risk (Benign Fibroma)' },
+            'VASC': { level: 'medium', textAr: '🟡 متوسط الخطورة (آفة وعائية - يستحسن المتابعة)', textEn: '🟡 Moderate Risk (Vascular - Follow-up Recommended)' },
+            'AKIEC': { level: 'medium', textAr: '🟡 متوسط الخطورة (تغيرات ما قبل سرطانية)', textEn: '🟡 Moderate Risk (Pre-cancerous Changes)' },
+            'BCC': { level: 'high', textAr: '🔴 عالي الخطورة (ورم جلدي - يستوجب استشارة عاجلة)', textEn: '🔴 High Risk (Malignant - Requires Medical Attention)' },
+            'MEL': { level: 'high', textAr: '🔴 حرج / عالي الخطورة جداً (ورم ميلانوما - فحص طبي عاجل)', textEn: '🔴 Critical / High Risk (Melanoma - Urgent Care Needed)' }
+        };
+
+        // تابع تحديث الشارة (يُستدعى بعد الحصول على النتيجة)
+        function updateRiskBadge(diseaseKey) {
+            const riskBadge = document.getElementById('riskBadge');
+            let currentRisk = riskLevels['NV'];
+
+            for (const key of Object.keys(riskLevels)) {
+                if (diseaseKey.includes(key)) {
+                    currentRisk = riskLevels[key];
+                    break;
+                }
+            }
+
+            riskBadge.className = `risk-badge risk-${currentRisk.level}`;
+            riskBadge.innerText = currentLang === 'ar' ? currentRisk.textAr : currentRisk.textEn;
+            riskBadge.style.display = 'flex';
+        }
     </script>
 </body>
 
