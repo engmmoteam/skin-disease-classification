@@ -19,145 +19,154 @@
 
         /* الهيدر العلوي */
         /* ==================== الهيدر العصري المطور ==================== */
+        /* --- تصميم الهيدر الاحترافي (Modern SaaS Header) --- */
         .app-header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f2744 100%);
-            border-bottom: 2px solid #1e40af;
-            padding: 18px 25px;
-            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* خلفية ضوئية خفيفة في الهيدر */
-        .app-header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 20%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
-            pointer-events: none;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 12px 28px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
 
         .header-container {
-            max-width: 1250px;
+            max-width: 1400px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            justify-content: space-between;
+            gap: 16px;
         }
 
-        /* قسم اللوجو والعنوان */
-        .brand-section {
+        /* اللوجو والعنوان */
+        .brand-logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
+            text-decoration: none;
         }
 
-        .logo-badge {
-            position: relative;
-            background: rgba(30, 58, 138, 0.5);
-            border: 1px solid rgba(59, 130, 246, 0.4);
-            border-radius: 14px;
-            width: 52px;
-            height: 52px;
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.7rem;
-            backdrop-filter: blur(8px);
-        }
-
-        /* النقطة المضيئة النابضة */
-        .pulse-dot {
-            position: absolute;
-            top: 4px;
-            right: 4px;
-            width: 10px;
-            height: 10px;
-            background-color: #10b981;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #10b981;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-            }
-
-            70% {
-                transform: scale(1);
-                box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
-            }
-
-            100% {
-                transform: scale(0.95);
-                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
-            }
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
         }
 
         .brand-text h1 {
             margin: 0;
-            font-size: 1.55rem;
-            color: #ffffff;
+            font-size: 1.25rem;
             font-weight: 700;
+            color: #ffffff;
             letter-spacing: -0.3px;
-        }
-
-        .brand-text h1 span {
-            background: linear-gradient(90deg, #60a5fa, #38bdf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-
-        .brand-text p {
-            margin: 4px 0 0 0;
-            color: #94a3b8;
-            font-size: 0.85rem;
-        }
-
-        /* الشارات والشعارات الجانبية */
-        .header-badges {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .status-pill {
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            color: #34d399;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.82rem;
-            font-weight: 600;
         }
 
-        .status-dot {
-            width: 7px;
-            height: 7px;
-            background-color: #34d399;
+        .brand-text p {
+            margin: 2px 0 0 0;
+            font-size: 0.78rem;
+            color: #94a3b8;
+        }
+
+        /* المنتصف: الشارات والمؤشرات */
+        .header-status-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #e2e8f0;
+        }
+
+        /* النقطة الخضراء النابضة */
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
             border-radius: 50%;
+            position: relative;
         }
 
-        .tech-pill {
-            background: rgba(59, 130, 246, 0.12);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            color: #93c5fd;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.82rem;
+        .pulse-dot::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: #22c55e;
+            border-radius: 50%;
+            animation: pulse 1.8s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(2.8);
+                opacity: 0;
+            }
+        }
+
+        /* الأزرار على اليسار */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-header-action {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #f8fafc;
+            padding: 7px 14px;
+            border-radius: 8px;
+            font-size: 0.825rem;
             font-weight: 600;
-            direction: ltr;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-header-action:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .btn-reset {
+            background: rgba(239, 68, 68, 0.15);
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+
+        .btn-reset:hover {
+            background: rgba(239, 68, 68, 0.28);
+            color: #ffffff;
         }
 
         /* تجاوب الشاشات الصغيرة */
@@ -387,36 +396,180 @@
         }
 
         /* تنسيق الفوتر أسفل الموقع */
+        /* --- تصميم الفوتر المطور (Modern SaaS Footer) --- */
         .app-footer {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            color: #e2e8f0;
-            text-align: center;
-            padding: 20px 15px;
-            margin-top: 50px;
-            border-top: 3px solid #3b82f6;
-            font-size: 0.9rem;
-        }
-
-        .footer-container p {
-            margin: 6px 0;
-            line-height: 1.5;
-        }
-
-        .copyright {
+            background: linear-gradient(180deg, #0f172a 0%, #080d1a 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
             color: #94a3b8;
+            padding: 40px 28px 20px 28px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        /* خط إضاءة نيون خفيف في أعلى الفوتر */
+        .app-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.6), transparent);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-bottom: 28px;
+        }
+
+        /* 1. القسم الأيمن: الشعار والوصف والتنويه */
+        .footer-brand {
+            max-width: 460px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .footer-brand-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: -0.5px;
+        }
+
+        .footer-brand-desc {
             font-size: 0.85rem;
+            line-height: 1.6;
+            color: #94a3b8;
+            margin: 0 0 16px 0;
         }
 
-        .created-by {
-            font-weight: 500;
-            color: #f8fafc;
-            direction: ltr;
-            /* لعرض الأسماء الإنجليزية بشكل مضبوط من الشمال لليمين */
+        .footer-disclaimer-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(234, 179, 8, 0.08);
+            border: 1px solid rgba(234, 179, 8, 0.2);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            color: #fef08a;
         }
 
-        .created-by span {
+        /* 2. القسم الأيسر: فريق العمل */
+        .footer-team-section {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .team-title {
+            font-size: 0.925rem;
+            font-weight: 600;
+            color: #f1f5f9;
+            margin: 0 0 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .team-badges {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .team-chip {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 10px 16px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            transition: all 0.2s ease;
+        }
+
+        .team-chip:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .lead-chip {
+            background: rgba(37, 99, 235, 0.12);
+            border-color: rgba(37, 99, 235, 0.35);
+        }
+
+        .chip-role {
+            font-size: 0.7rem;
             color: #60a5fa;
-            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .chip-name {
+            font-size: 0.875rem;
+            color: #f8fafc;
+            font-weight: 600;
+        }
+
+        /* 3. الخط الفاصل والشريط السفلي */
+        .footer-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin-bottom: 20px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .copyright-text strong {
+            color: #cbd5e1;
+        }
+
+        .footer-tech-specs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: #64748b;
+        }
+
+        .dot-separator {
+            color: #334155;
         }
 
         /* تنسيق صناديق المعلومات والتحاليل والأدوية */
@@ -459,93 +612,212 @@
         }
 
         /* سكشن إحصائيات ومعلومات الموديل */
+        /* ==================== سكشن الإحصائيات الفنية الاحترافي ==================== */
         .model-info-section {
             max-width: 1250px;
             margin: 40px auto 30px auto;
-            padding: 30px;
+            padding: 32px;
             background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eef2f5;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.03);
         }
 
         .model-info-header {
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #2563eb;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
         }
 
         .model-info-header h2 {
-            margin: 0 0 8px 0;
-            color: #1e3c72;
-            font-size: 1.5rem;
+            margin: 0 0 6px 0;
+            color: #0f172a;
+            font-size: 1.4rem;
+            font-weight: 700;
         }
 
         .model-info-header p {
             margin: 0;
             color: #64748b;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
         }
 
-        /* توزيع كروت الإحصائيات */
+        /* توزيع الكروت الاحترافية */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 16px;
+            margin-bottom: 28px;
         }
 
         .stat-card {
-            background: #f8fafc;
+            background: #ffffff;
             border: 1px solid #e2e8f0;
+            border-top: 3px solid #3b82f6;
             border-radius: 10px;
-            padding: 20px 15px;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            padding: 20px 16px;
+            transition: all 0.25s ease-in-out;
+            position: relative;
         }
 
         .stat-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-            border-color: #3b82f6;
+            border-top-color: #1d4ed8;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+            transform: translateY(-2px);
         }
 
-        .stat-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
+        .stat-icon-svg {
+            width: 36px;
+            height: 36px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e293b;
+            margin-bottom: 14px;
         }
 
         .stat-number {
             font-size: 1.35rem;
-            font-weight: bold;
+            font-weight: 800;
             color: #0f172a;
+            line-height: 1.2;
             margin-bottom: 4px;
+            letter-spacing: -0.3px;
         }
 
-        .stat-label {
-            font-size: 0.85rem;
+        .stat-title {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #334155;
+            margin-bottom: 2px;
+        }
+
+        .stat-sub {
+            font-size: 0.78rem;
             color: #64748b;
-            line-height: 1.3;
+        }
+
+        /* خط سير المعالجة Pipeline */
+        .pipeline-container {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px 24px;
+        }
+
+        .pipeline-header {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 16px;
+        }
+
+        .pipeline-steps {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .step-num {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #2563eb;
+            background: #dbeafe;
+            padding: 4px 8px;
+            border-radius: 6px;
+            line-height: 1;
+        }
+
+        .step-text strong {
+            display: block;
+            font-size: 0.85rem;
+            color: #0f172a;
+            margin-bottom: 3px;
+        }
+
+        .step-text p {
+            margin: 0;
+            font-size: 0.78rem;
+            color: #64748b;
+            line-height: 1.4;
+        }
+
+        .step-arrow {
+            color: #94a3b8;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        @media (max-width: 820px) {
+            .pipeline-steps {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .step-arrow {
+                display: none;
+            }
         }
 
         /* صندوق شرح طريقة العمل */
-        .model-description-box {
-            background: #f0f9ff;
-            border-right: 4px solid #0284c7;
-            padding: 15px 20px;
-            border-radius: 6px;
+        /* صندوق شرح آلية عمل النظام المدمج */
+        .system-workflow-box {
+            margin-top: 20px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-right: 4px solid #2563eb;
+            border-radius: 10px;
+            padding: 16px 20px;
         }
 
-        .model-description-box h4 {
-            margin: 0 0 8px 0;
-            color: #0369a1;
-            font-size: 1rem;
+        .workflow-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #1d4ed8;
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 6px;
         }
 
-        .model-description-box p {
+        .workflow-header svg {
+            color: #2563eb;
+        }
+
+        .system-workflow-box p {
             margin: 0;
             color: #334155;
-            font-size: 0.92rem;
-            line-height: 1.6;
+            font-size: 0.85rem;
+            line-height: 1.65;
+        }
+
+        .system-workflow-box strong {
+            color: #0f172a;
         }
 
         /* تنسيق خيارات الرفع والكاميرا */
@@ -716,6 +988,767 @@
                 box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
             }
         }
+
+        /* صندوق استبيان الأعراض */
+        .symptoms-container {
+            margin: 20px 0;
+            padding: 15px 18px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .symptoms-header h4 {
+            margin: 0 0 4px 0;
+            color: #1e293b;
+            font-size: 0.95rem;
+        }
+
+        .symptoms-header p {
+            margin: 0 0 12px 0;
+            color: #64748b;
+            font-size: 0.82rem;
+        }
+
+        .symptom-q {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .symptom-q label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 6px;
+        }
+
+        .q-options {
+            display: flex;
+            gap: 20px;
+        }
+
+        .q-options label {
+            font-weight: normal;
+            cursor: pointer;
+            color: #0f172a;
+        }
+
+        .btn-refine {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            background: #0284c7;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.88rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-refine:hover {
+            background: #0369a1;
+        }
+
+        /* ==================== تنسيق كارت النتائج والتقرير ==================== */
+        .results-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+            border: 1px solid #e2e8f0;
+            min-height: 380px;
+        }
+
+        /* حالة الانتظار (Placeholder) */
+        .placeholder-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+            text-align: center;
+            color: #94a3b8;
+        }
+
+        .placeholder-icon {
+            width: 72px;
+            height: 72px;
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            margin-bottom: 16px;
+        }
+
+        .placeholder-state h3 {
+            margin: 0 0 6px 0;
+            color: #334155;
+            font-size: 1.1rem;
+        }
+
+        .placeholder-state p {
+            margin: 0;
+            font-size: 0.85rem;
+            max-width: 380px;
+            line-height: 1.5;
+        }
+
+        /* هيدر التقرير المطور */
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 16px;
+            margin-bottom: 18px;
+        }
+
+        .report-tag {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #2563eb;
+            background: #eff6ff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 4px;
+        }
+
+        .top-name {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #0f172a;
+            letter-spacing: -0.3px;
+        }
+
+        .top-desc {
+            color: #475569;
+            font-size: 0.88rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* زرار تحميل PDF الاحترافي */
+        .btn-pdf {
+            background: #0f172a;
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-pdf:hover {
+            background: #1e293b;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+        }
+
+        /* أشرطة الاحتمالات المحدثة */
+        .probabilities-section {
+            margin-bottom: 22px;
+        }
+
+        .section-subtitle {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: #64748b;
+            margin-bottom: 12px;
+        }
+
+        .progress-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .progress-item {
+            background: #f8fafc;
+            border: 1px solid #f1f5f9;
+            border-radius: 8px;
+            padding: 10px 14px;
+        }
+
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            border-radius: 10px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* قسم أسئلة الأعراض */
+        .symptoms-container {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 20px;
+        }
+
+        .symptoms-header h4 {
+            margin: 0 0 4px 0;
+            color: #0f172a;
+            font-size: 0.92rem;
+            font-weight: 700;
+        }
+
+        .symptoms-header p {
+            margin: 0 0 14px 0;
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        .symptom-q {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .symptom-q:last-of-type {
+            border-bottom: none;
+        }
+
+        .symptom-q label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .q-options {
+            display: flex;
+            gap: 18px;
+        }
+
+        .q-options label {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: #0f172a;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .btn-refine {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 8px;
+        }
+
+        .btn-refine:hover {
+            background: #1d4ed8;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        /* ضبط شبكة الداشبورد للعمودين بنفس الارتفاع */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: start;
+            max-width: 1250px;
+            margin: 0 auto;
+        }
+
+        /* تحسين أيقونات الرفع الهندسية */
+        .upload-icon-svg {
+            width: 44px;
+            height: 44px;
+            background: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563eb;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .upload-label:hover .upload-icon-svg,
+        .btn-camera:hover .upload-icon-svg {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+        }
+
+        /* تنسيق التنويه الطبي المدمج أنيق وناعم */
+        .medical-disclaimer-inline {
+            margin-top: 18px;
+            padding: 10px 14px;
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-right: 3px solid #f59e0b;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            color: #92400e;
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+
+        .medical-disclaimer-inline svg {
+            color: #d97706;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* تنسيق أيقونات الرفع الـ SVG */
+        .upload-icon-svg {
+            width: 44px;
+            height: 44px;
+            background: #f1f5f9;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563eb;
+            margin-bottom: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .upload-label:hover .upload-icon-svg,
+        .btn-camera:hover .upload-icon-svg {
+            background: #2563eb;
+            color: #ffffff;
+        }
+
+        /* ==================== تنسيق كارت الرفع المطور ==================== */
+        .upload-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+            border: 1px solid #e2e8f0;
+        }
+
+        .upload-card .card-header h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0 0 4px 0;
+        }
+
+        .upload-card .card-header p {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin: 0 0 20px 0;
+        }
+
+        /* شبكة خيارات الرفع (منع الحدود المضاعفة) */
+        .upload-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+            border: none !important;
+            padding: 0 !important;
+            background: transparent !important;
+        }
+
+        .upload-box {
+            width: 100%;
+            border: none !important;
+            padding: 0 !important;
+            background: transparent !important;
+        }
+
+        /* صناديق الأزرار (إطار منقط ناعم وحيد) */
+        .upload-btn-label,
+        .upload-btn-camera {
+            width: 100%;
+            min-height: 120px;
+            background: #f8fafc;
+            border: 2px dashed #94a3b8 !important;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.25s ease-in-out;
+            outline: none;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .upload-btn-label:hover,
+        .upload-btn-camera:hover {
+            background: #eff6ff;
+            border-color: #2563eb !important;
+            transform: translateY(-2px);
+        }
+
+        /* أيقونات SVG الهندسية */
+        .upload-icon-svg {
+            width: 42px;
+            height: 42px;
+            background: #ffffff;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2563eb;
+            margin-bottom: 8px;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        .upload-btn-label:hover .upload-icon-svg,
+        .upload-btn-camera:hover .upload-icon-svg {
+            background: #2563eb;
+            color: #ffffff;
+            border-color: #2563eb;
+        }
+
+        .upload-btn-label span,
+        .upload-btn-camera span {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #334155;
+        }
+
+        /* معاينة الصورة */
+        .image-preview-wrapper {
+            margin-bottom: 16px;
+        }
+
+        #preview {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* زر بدء التحليل الرئيسي */
+        .btn-primary {
+            width: 100%;
+            background: #1e40af;
+            color: #ffffff;
+            border: none;
+            padding: 13px 20px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-1px);
+        }
+
+        /* التنويه الطبي المدمج احترافياً */
+        .medical-disclaimer-inline {
+            margin-top: 16px;
+            padding: 10px 14px;
+            background: #fffbeb;
+            border: 1px solid #fef3c7;
+            border-right: 3px solid #f59e0b;
+            border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            color: #92400e;
+            font-size: 0.78rem;
+            line-height: 1.5;
+        }
+
+        .medical-disclaimer-inline svg {
+            color: #d97706;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        /* نافذة الكاميرا */
+        .camera-modal {
+            margin-bottom: 16px;
+            background: #0f172a;
+            border-radius: 12px;
+            padding: 12px;
+        }
+
+        #videoFeed {
+            width: 100%;
+            border-radius: 8px;
+            background: #0
+        }
+
+        /* ضمان فتح شاشة اختيار الصور عند الضغط على أي عنصر داخل الزرار */
+        .upload-btn-label * {
+            pointer-events: none;
+        }
+
+        /* كارت استبيان الأعراض */
+        .symptoms-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .symptom-item {
+            padding: 14px 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+
+        .symptom-item:last-child {
+            border-bottom: none;
+        }
+
+        .symptom-question {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        /* خيارات نعم / لا العصرية */
+        .toggle-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .toggle-option {
+            position: relative;
+        }
+
+        .toggle-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .toggle-label {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 20px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+
+        /* حالة اختيار (لا) */
+        .toggle-option input[type="radio"][value="no"]:checked+.toggle-label {
+            background-color: #f1f5f9;
+            border-color: #94a3b8;
+            color: #334155;
+        }
+
+        /* حالة اختيار (نعم) - تنبيه أحمر خفيف */
+        .toggle-option input[type="radio"][value="yes"]:checked+.toggle-label {
+            background-color: #fef2f2;
+            border-color: #ef4444;
+            color: #dc2626;
+        }
+
+        /* زر إجادة التقييم المطور */
+        .btn-reevaluate {
+            width: 100%;
+            margin-top: 16px;
+            padding: 12px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform 0.1s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-reevaluate:hover {
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            transform: translateY(-1px);
+        }
+
+        /* تصميم الـ Pop-up */
+        .custom-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.2s ease-out;
+        }
+
+        .custom-modal-card {
+            background: #ffffff;
+            padding: 28px 24px;
+            border-radius: 20px;
+            max-width: 440px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .modal-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 16px auto;
+        }
+
+        .modal-icon.warning {
+            background: #fef2f2;
+            color: #dc2626;
+        }
+
+        .modal-icon.success {
+            background: #f0fdf4;
+            color: #16a34a;
+        }
+
+        .custom-modal-card h3 {
+            margin: 0 0 8px 0;
+            color: #0f172a;
+            font-size: 1.2rem;
+        }
+
+        .custom-modal-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+
+        .modal-details-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            font-size: 0.85rem;
+            color: #334155;
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .btn-modal-close {
+            width: 100%;
+            padding: 12px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .btn-modal-close:hover {
+            background: #1d4ed8;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* قواعد منيعة للـ PDF والأشكال المطبوعة */
+        .no-pdf {
+            display: none !important;
+            /* العناصر التي تحمل هذا الكلاس لن تظهر في الـ PDF */
+        }
+
+        /* منع انقسام الكروت والسكاشن عند فاصل الصفحات */
+        .info-box,
+        .symptoms-card,
+        #report-content>div {
+            page-break-inside: avoid !important;
+            break-inside: avoid !important;
+        }
+
+        /* ضبط الخطوط لمنع تفكك الحروف العربية أثناء تصدير html2canvas */
+        #report-content {
+            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+            color: #0f172a !important;
+            background-color: #ffffff !important;
+            padding: 20px !important;
+        }
     </style>
 </head>
 
@@ -724,32 +1757,59 @@
     <header class="app-header">
         <div class="header-container">
 
-            <!-- الجانب الأيمن: اللوجو والعنوان -->
-            <div class="brand-section">
-                <div class="logo-badge">
-                    <span class="logo-icon">🔬</span>
-                    <span class="pulse-dot" title="المرمجة جاهرة للتحليل"></span>
+            <!-- 1. الشعار واسم المشروع -->
+            <a href="#" class="brand-logo">
+                <div class="logo-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <circle cx="12" cy="12" r="3" />
+                    </svg>
                 </div>
                 <div class="brand-text">
-                    <h1>DermoAI <span>لتشخيص الأمراض الجلدية</span></h1>
-                    <p>نظام تشخيص مبدئي ذكي مدعوم برؤية الحاسوب والذكاء الاصطناعي</p>
+                    <h1>DermoAI <span
+                            style="font-size: 0.75rem; background: #2563eb; color: #fff; padding: 2px 8px; border-radius: 6px;">v2.0</span>
+                    </h1>
+                    <p>نظام تشخيص مبدئي للأمراض الجلدية بالذكاء الاصطناعي</p>
+                </div>
+            </a>
+
+            <!-- 2. حالة النظام والمعمارية المستخدمة -->
+            <div class="header-status-group">
+                <div class="status-badge">
+                    <span class="pulse-dot"></span>
+                    <span>النظام جاهز للتحليل</span>
+                </div>
+                <div class="status-badge" style="border-color: rgba(59, 130, 246, 0.4);">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                    <span style="color: #93c5fd;">EfficientNet Model</span>
                 </div>
             </div>
 
-            <!-- الجانب الأيسر: شارات الحالة والتكنولوجيا -->
-            <div class="header-badges">
-                <div class="header-badges">
-                    <button id="langToggleBtn" class="lang-pill" onclick="toggleLanguage()">
-                        🌐 English
-                    </button>
-                    <div class="status-pill">
-                        <span class="status-dot"></span>
-                        <span id="statusText">النظام جاهز</span>
-                    </div>
-                    <div class="tech-pill">
-                        <span>⚡ EfficientNet Architecture</span>
-                    </div>
-                </div>
+            <!-- 3. الأزرار التفاعلية -->
+            <div class="header-actions">
+                <!-- زر إعادة تعيين الواجهة لرفع صورة جديدة -->
+                <button class="btn-header-action btn-reset" onclick="resetInterface()"
+                    title="مسح النتائج والبدء من جديد">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                    </svg>
+                    <span>حالة جديدة</span>
+                </button>
+
+                <!-- زر تغيير اللغة -->
+                <button class="btn-header-action" onclick="alert('سيكون التبديل الكامل للغة الإنجليزية متاحاً قريباً')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M2 12h20" />
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                    <span>English</span>
+                </button>
             </div>
 
         </div>
@@ -759,49 +1819,85 @@
         <!-- كارت رفع الصورة (الجانب الأيمن) -->
         <section class="card upload-card">
             <div class="card-header">
-                <h3>📸 رفع صورة الإصابة</h3>
+                <h3>رفع صورة الإصابة</h3>
                 <p>اختر صورة واضحة ومباشرة للمنطقة الجلدية المراد فحصها</p>
             </div>
 
             <!-- منطقة اختيار الصور أو فتح الكاميرا -->
             <div class="upload-options">
-                <div class="upload-area">
+                <!-- اختيار صورة من الجهاز -->
+                <div class="upload-box">
                     <input type="file" id="imageInput" accept="image/*" onchange="previewImage()" hidden>
-                    <label for="imageInput" class="upload-label">
-                        <div class="upload-icon">📁</div>
+                    <label for="imageInput" class="upload-btn-label">
+                        <div class="upload-icon-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+                                <path d="M12 12v9" />
+                                <path d="m16 16-4-4-4 4" />
+                            </svg>
+                        </div>
                         <span>اختر صورة من جهازك</span>
                     </label>
                 </div>
 
-
-                <div class="camera-area">
-                    <button type="button" class="btn-camera" onclick="startCamera()">
-                        <span class="camera-icon">📷</span>
+                <!-- التقاط صورة بالكاميرا -->
+                <div class="upload-box">
+                    <button type="button" class="upload-btn-camera" onclick="openCamera()">
+                        <div class="upload-icon-svg">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path
+                                    d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" />
+                                <circle cx="12" cy="13" r="3" />
+                            </svg>
+                        </div>
                         <span>التقاط صورة بالكاميرا</span>
                     </button>
                 </div>
             </div>
 
-            <!-- نافذة عرض بث الكاميرا الحية (تظهر عند الضغط على زرار الكاميرا) -->
+            <!-- نافذة عرض بث الكاميرا -->
             <div id="cameraModal" class="camera-modal" style="display: none;">
                 <div class="camera-box">
                     <video id="videoFeed" autoplay playsinline></video>
                     <canvas id="photoCanvas" style="display: none;"></canvas>
                     <div class="camera-controls">
-                        <button class="btn-capture" onclick="takeSnapshot()">📸 التقاط</button>
-                        <button class="btn-close-cam" onclick="stopCamera()">❌ إغلاق</button>
+                        <button class="btn-capture" onclick="takeSnapshot()">التقاط الصورة</button>
+                        <button class="btn-close-cam" onclick="stopCamera()">إغلاق</button>
                     </div>
                 </div>
             </div>
 
+            <!-- معاينة الصورة المرفوعة -->
             <div class="image-preview-wrapper">
                 <img id="preview" src="" alt="معاينة الصورة" style="display: none;">
             </div>
 
+            <!-- زر بدء التحليل -->
             <button class="btn-primary" onclick="uploadImage()">
-                <span>⚡ بدء التحليل المبدئي</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13 2 L3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+                <span>بدء التحليل المبدئي</span>
             </button>
 
+            <!-- التنويه الطبي المدمج احترافياً -->
+            <div class="medical-disclaimer-inline">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
+                    <line x1="12" y1="9" x2="12" y2="13" />
+                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                </svg>
+                <span><strong>تنويه طبي:</strong> هذا النظام أداة مساعدة للفحص المبدئي القائم على AI ولا يغني عن استشارة
+                    الطبيب المختص.</span>
+            </div>
+
+            <!-- مؤشر التحميل -->
             <div id="loader" class="loader" style="display: none;">
                 <div class="spinner"></div>
                 <p>جاري تحليل الصورة بواسطة النموذج...</p>
@@ -809,339 +1905,734 @@
         </section>
 
         <!-- كارت النتيجة والتقرير (الجانب الأيسر) -->
-        <section class="card results-card">
-            <!-- صندوق النتيجة اللي هيتحول لـ PDF -->
-            <div class="results-box" id="resultsBox" style="display: none;">
+        <!-- كارت نتائج التحليل والتقرير الطبي -->
+        <div class="results-card">
 
-                <!-- الحاوية المخصصة للـ PDF -->
-                <div id="report-content" class="report-container">
-                    <h2 class="report-title">تقرير الفحص المبدئي للأمراض الجلدية</h2>
-
-                    <div class="report-image-box">
-                        <img id="pdf-image" src="" alt="صورة الفحص" style="display: none;">
-                    </div>
-                    <!-- شارة مستوى الخطورة الديناميكية -->
-                    <div id="riskBadge" class="risk-badge" style="display: none;"></div>
-
-                    <div class="top-match">
-                        <h3 id="topName"></h3>
-                        <p id="topDesc"></p>
-                    </div>
-
-                    <h4 class="section-subtitle">أعلى 3 احتمالات مرشحة:</h4>
-                    <div id="progressList" class="progress-list"></div>
-
-                    <div id="advice-section" class="advice-box" style="display: none;">
-                        <h4>💡 إرشادات طبية مقترحة:</h4>
-                        <ul id="advice-list"></ul>
-                    </div>
-                    <!-- قسم الفحوصات والتحاليل التأكيدية -->
-                    <div id="tests-section" class="info-box tests-box" style="display: none;">
-                        <h4>🔬 الفحوصات والتحاليل التأكيدية المقترحة:</h4>
-                        <ul id="tests-list"></ul>
-                    </div>
-
-                    <!-- قسم العلاجات والعناية الموضعية المقترحة -->
-                    <div id="meds-section" class="info-box meds-box" style="display: none;">
-                        <h4>🧴 العلاجات والعناية الموضعية المبدئية:</h4>
-                        <ul id="meds-list"></ul>
-                    </div>
-
-                    <div class="disclaimer-box">
-                        ⚠️ <strong>تنويه طبي هام:</strong> هذا النظام أداة مساعدة تعتمد على الذكاء الاصطناعي للفحص
-                        المبدئي فقط ولا يعتبر تشخيصاً طبياً نهائياً ولا يغني عن استشارة الطبيب المختص.
-                    </div>
+            <!-- الحالة الابتدائية (قبل الرفع أو التحليل) -->
+            <div id="placeholderState" class="placeholder-state">
+                <div class="placeholder-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="12" y1="18" x2="12" y2="12" />
+                        <line x1="9" y1="15" x2="15" y2="15" />
+                    </svg>
                 </div>
+                <h3>بانتظار تحليل الصورة</h3>
+                <p>قم برفع صورة واضغط على "بدء التحليل" لعرض التقرير الطبي المفصل والنسب المئوية.</p>
+            </div>
 
-                <!-- زرار تحميل الـ PDF -->
-                <div id="pdfButtonContainer" class="pdf-btn-wrapper" style="display: none;">
-                    <button id="downloadPdfBtn" class="btn-success" onclick="generatePDF()">
-                        📥 تحميل التقرير (PDF)
+            <!-- قسم التقرير الطبي المباشر (يظهر بعد المعالجة) -->
+            <div id="report-content" class="report-content" style="display: none;">
+
+                <!-- هيدر التقرير الشفاف -->
+                <div class="report-header">
+                    <div class="report-title-group">
+                        <span class="report-tag">Clinical Decision Output</span>
+                        <h3 id="topName" class="top-name">جاري الفحص...</h3>
+                    </div>
+                    <button id="downloadPdfBtn" class="btn-pdf" onclick="generatePDF()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                            <polyline points="7 10 12 15 17 10" />
+                            <line x1="12" y1="15" x2="12" y2="3" />
+                        </svg>
+                        <span>تحميل التقرير (PDF)</span>
                     </button>
                 </div>
 
-            </div>
+                <!-- شارة مستوى الخطورة -->
+                <div id="riskBadge" class="risk-badge" style="display: none;"></div>
 
-            <!-- شكل افتراضي قبل إجراء التحليل -->
-            <div id="placeholderState" class="placeholder-state">
-                <div class="placeholder-icon">📋</div>
-                <h3>النتائج ستظهر هنا</h3>
-                <p>قم برفع صورة واضغط على "بدء التحليل" لعرض التقرير الطبي والنسب المئوية.</p>
+                <!-- وصف التشخيص المرجح -->
+                <p id="topDesc" class="top-desc"></p>
+
+                <!-- أشرطة النسب المئوية لأعلى 3 احتمالات -->
+                <div class="probabilities-section">
+                    <span class="section-subtitle">أعلى الاحتمالات التشخيصية المرشحة:</span>
+                    <div id="progressList" class="progress-list"></div>
+                </div>
+
+                <!-- قسم أسئلة الأعراض السريرية التفاعلي -->
+                <div class="symptoms-card">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2">
+                            <path
+                                d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2m-6 9l2 2 4-4" />
+                        </svg>
+                        <h4 style="margin: 0; font-size: 1.05rem; color: #0f172a;">استبيان الأعراض السريرية (معايير
+                            ABCDE)</h4>
+                    </div>
+                    <p style="font-size: 0.825rem; color: #64748b; margin-bottom: 16px;">الإجابة على هذه الأسئلة تساعد
+                        في تعديل الأوزان النسبية للخطورة والتأكيد على التقييم المبدئي.</p>
+
+                    <!-- السؤال الأول -->
+                    <div class="symptom-item">
+                        <div class="symptom-question">1. هل الشامة/الإصابة بتفرز دم أو سائل، أو فيها قشرة بتنزف؟</div>
+                        <div class="toggle-group">
+                            <label class="toggle-option">
+                                <input type="radio" name="q1" value="yes">
+                                <span class="toggle-label">نعم</span>
+                            </label>
+                            <label class="toggle-option">
+                                <input type="radio" name="q1" value="no" checked>
+                                <span class="toggle-label">لا</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- السؤال الثاني -->
+                    <div class="symptom-item">
+                        <div class="symptom-question">2. هل في حكة شديدة، حرقان، أو ألم مستمر في المنطقة؟</div>
+                        <div class="toggle-group">
+                            <label class="toggle-option">
+                                <input type="radio" name="q2" value="yes">
+                                <span class="toggle-label">نعم</span>
+                            </label>
+                            <label class="toggle-option">
+                                <input type="radio" name="q2" value="no" checked>
+                                <span class="toggle-label">لا</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- السؤال الثالث -->
+                    <div class="symptom-item">
+                        <div class="symptom-question">3. هل لاحظت تغير سريع في حجمها، شكلها، أو ألوانها خلال الأسابيع
+                            الأخيرة؟</div>
+                        <div class="toggle-group">
+                            <label class="toggle-option">
+                                <input type="radio" name="q3" value="yes">
+                                <span class="toggle-label">نعم</span>
+                            </label>
+                            <label class="toggle-option">
+                                <input type="radio" name="q3" value="no" checked>
+                                <span class="toggle-label">لا</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- زر إعادة التقييم -->
+                    <button class="btn-reevaluate" onclick="reevaluateSymptoms()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" />
+                        </svg>
+                        إعادة تقييم مستوى الخطورة بناءً على الأعراض
+                    </button>
+                </div>
+                <div id="advice-section" class="advice-box" style="display: none;">
+                    <h4>💡 إرشادات طبية مقترحة:</h4>
+                    <ul id="advice-list"></ul>
+                </div>
+                <!-- قسم الفحوصات والتحاليل التأكيدية -->
+                <div id="tests-section" class="info-box tests-box" style="display: none;">
+                    <h4>🔬 الفحوصات والتحاليل التأكيدية المقترحة:</h4>
+                    <ul id="tests-list"></ul>
+                </div>
+
+                <!-- قسم العلاجات والعناية الموضعية المقترحة -->
+                <div id="meds-section" class="info-box meds-box" style="display: none;">
+                    <h4>🧴 العلاجات والعناية الموضعية المبدئية:</h4>
+                    <ul id="meds-list"></ul>
+                </div>
             </div>
+        </div>
+
+
+        <!--<div class="disclaimer-box">
+            ⚠️ <strong>تنويه طبي هام:</strong> هذا النظام أداة مساعدة تعتمد على الذكاء الاصطناعي للفحص
+            المبدئي فقط ولا يعتبر تشخيصاً طبياً نهائياً ولا يغني عن استشارة الطبيب المختص.
+        </div>-->
+        </div>
+
+        <!-- زرار تحميل الـ PDF -->
+        <!--<div id="pdfButtonContainer" class="pdf-btn-wrapper" style="display: none;">
+            <button id="downloadPdfBtn" class="btn-success" onclick="generatePDF()">
+                📥 تحميل التقرير (PDF)
+            </button>
+        </div>-->
+
+        </div>
+
+        <!-- شكل افتراضي قبل إجراء التحليل -->
+        <!--<div id="placeholderState" class="placeholder-state">
+            <div class="placeholder-icon">📋</div>
+            <h3>النتائج ستظهر هنا</h3>
+            <p>قم برفع صورة واضغط على "بدء التحليل" لعرض التقرير الطبي والنسب المئوية.</p>
+        </div>-->
         </section>
     </main>
     <!-- سكشن إحصائيات ومعلومات النموذج -->
+    <!-- سكشن معلومات ومعمارية النموذج (تصميم احترافي) -->
     <section class="model-info-section">
         <div class="model-info-header">
-            <h2>🧠 عن نموذج الذكاء الاصطناعي (Model Overview)</h2>
-            <p>نظام تشخيص مبدئي يعتمد على شبكات الـ CNN العميقة وتقنيات التعلم المنقول (Transfer Learning)</p>
+            <span class="section-tag">System Architecture & Specs</span>
+            <h2>المواصفات التقنية لنموذج الذكاء الاصطناعي</h2>
+            <p>نظام تشخيص يعتمد على شبكات Convolutional Neural Networks وتقنيات Transfer Learning</p>
         </div>
 
-        <!-- شبكة الإحصائيات السريعة -->
+        <!-- كروت الإحصائيات الفنية -->
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-icon">🖼️</div>
-                <div class="stat-number">10,015+</div>
-                <div class="stat-label">صورة فائقة الدقة (HAM10000 Dataset)</div>
+                <div class="stat-icon-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+                        <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+                        <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
+                    </svg>
+                </div>
+                <div class="stat-number">10,015</div>
+                <div class="stat-title">HAM10000 Dataset</div>
+                <div class="stat-sub">صورة طبية فائقة الدقة</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-icon">🎯</div>
+                <div class="stat-icon-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="m9 12 2 2 4-4" />
+                    </svg>
+                </div>
                 <div class="stat-number">91.4%</div>
-                <div class="stat-label">دقة التنبؤ المباشر (Model Accuracy)</div>
+                <div class="stat-title">Top-1 Accuracy</div>
+                <div class="stat-sub">دقة التنبؤ المباشر</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-icon">🧬</div>
+                <div class="stat-icon-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="18" height="18" x="3" y="3" rx="2" />
+                        <path d="M9 3v18" />
+                        <path d="M15 3v18" />
+                        <path d="M3 9h18" />
+                        <path d="M3 15h18" />
+                    </svg>
+                </div>
                 <div class="stat-number">EfficientNet</div>
-                <div class="stat-label">المعمارية الأساسية (Pre-trained Architecture)</div>
+                <div class="stat-title">Pre-trained Backbone</div>
+                <div class="stat-sub">معمارية الشبكة العميقة</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-icon">🩺</div>
-                <div class="stat-number">7 فئات</div>
-                <div class="stat-label">أمراض جلدية وأورام سريرية مختلفة</div>
+                <div class="stat-icon-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+                        <path d="m9 12 2 2 4-4" />
+                    </svg>
+                </div>
+                <div class="stat-number">7 Classes</div>
+                <div class="stat-title">Diagnostic Categories</div>
+                <div class="stat-sub">فئات أورام وأمراض جلدية</div>
             </div>
 
             <div class="stat-card">
-                <div class="stat-icon">⚡</div>
-                <div class="stat-number">&lt; 1 ثانية</div>
-                <div class="stat-label">زمن الفحص والمعالجة الفورية</div>
+                <div class="stat-icon-svg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M13 2 L3 14h9l-1 8 10-12h-9l1-8z" />
+                    </svg>
+                </div>
+                <div class="stat-number"><span dir="ltr">&lt; 1sec</span></div>
+                <div class="stat-title">Inference Time</div>
+                <div class="stat-sub">زمن المعالجة الفورية</div>
             </div>
         </div>
 
+        <!-- خط سير المعالجة Inference Pipeline -->
+        <div class="pipeline-container">
+            <div class="pipeline-header">خط سير معالجة واستنتاج البيانات (Inference Pipeline)</div>
+            <div class="pipeline-steps">
+                <div class="step-item">
+                    <span class="step-num">01</span>
+                    <div class="step-text">
+                        <strong>Image Preprocessing</strong>
+                        <p>تعديل الأبعاد وضبط التباين والألوان للمنطقة الجلدية.</p>
+                    </div>
+                </div>
+                <div class="step-arrow">←</div>
+                <div class="step-item">
+                    <span class="step-num">02</span>
+                    <div class="step-text">
+                        <strong>Feature Extraction</strong>
+                        <p>استخلاص الخصائص الحيوية عبر طبقات EfficientNet العميقة.</p>
+                    </div>
+                </div>
+                <div class="step-arrow">←</div>
+                <div class="step-item">
+                    <span class="step-num">03</span>
+                    <div class="step-text">
+                        <strong>Clinical Decision</strong>
+                        <p>دمج نتائج النموذج مع الأعراض وتوليد التقرير الطبّي.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- شرح مبسط عن آلية عمل الموديل -->
-        <div class="model-description-box">
-            <h4>💡 كيف يعمل النظام؟</h4>
+        <!-- صندوق شرح آلية العمل المدمج والاحترافي -->
+        <div class="system-workflow-box">
+            <div class="workflow-header">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 16v-4" />
+                    <path d="M12 8h.01" />
+                </svg>
+                <span>آلية المعالجة والتنبؤ السريري</span>
+            </div>
             <p>
                 يقوم النظام بمعالجة الصورة المرفوعة عبر مرحلة <strong>Preprocessing</strong> لتعديل الأبعاد وضبط
-                التباين، ثم يمررها على طبقات الاستخلاص العميقة الموزونة مسبقاً على بيانات ImageNet لتمييز أدق الخصائص
-                الحيوية في الجلد، ليخرج الاحتمالات المرجحة مع تقرير طبي قابل للطباعة بـ PDF يحتوي الإرشادات والفحوصات
-                التأكيدية.
+                التباين، ثم
+                يمررها على طبقات الاستخلاص العميقة الموزونة مسبقاً على بيانات ImageNet لتمييز أدق الخصائص الحيوية في
+                الجلد،
+                ليخرج الاحتمالات المرجحة مع تقرير طبي قابل للطباعة بـ PDF يحتوي الإرشادات والفحوصات التأكيدية.
             </p>
         </div>
+    </section>
+    </section>
     </section>
     <!-- فوتر حقوق الملكية وفريق العمل -->
     <footer class="app-footer">
         <div class="footer-container">
-            <p class="copyright">جميع الحقوق محفوظة © 2026 | نظام التشخيص المبدئي للأمراض الجلدية</p>
-            <p class="created-by">
-                Created & Developed by:
-                <span>Eng. Mohamed Hatem</span> |
-                <span>Mohamed Reda</span> |
-                <span>Omar Hassan</span>
-            </p>
+
+            <!-- الجزء العلوي من الفوتر -->
+            <div class="footer-top">
+
+                <!-- معلومات المنظومة والتنويه -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <div class="footer-logo-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffffff"
+                                stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </div>
+                        <span class="footer-brand-title">DermoAI System</span>
+                    </div>
+                    <p class="footer-brand-desc">
+                        منظومة ذكاء اصطناعي واعدة للتشخيص المبدئي للأمراض الجلدية بالاعتماد على معمارية EfficientNet
+                        والتقييم السريري السريع.
+                    </p>
+                    <div class="footer-disclaimer-badge">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#eab308" stroke-width="2">
+                            <path
+                                d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" />
+                            <line x1="12" y1="9" x2="12" y2="13" />
+                            <line x1="12" y1="17" x2="12.01" y2="17" />
+                        </svg>
+                        <span>أداة مساعدة للتقييم الأول ولا تعتبر بديلاً عن الفحص الطبي المباشر.</span>
+                    </div>
+                </div>
+
+                <!-- فريق التطوير بطاقات عصرية -->
+                <div class="footer-team-section">
+                    <h4 class="team-title">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="8.5" cy="7" r="4" />
+                            <polyline points="17 11 19 13 23 9" />
+                        </svg>
+                        فريق البحث والتطوير (Development Team)
+                    </h4>
+                    <div class="team-badges">
+                        <div class="team-chip lead-chip">
+                            <span class="chip-role">Lead Engineer</span>
+                            <span class="chip-name">Eng. Mohamed Hatem</span>
+                        </div>
+                        <div class="team-chip">
+                            <span class="chip-role">AI Developer</span>
+                            <span class="chip-name">Eng. Mohamed Reda</span>
+                        </div>
+                        <div class="team-chip">
+                            <span class="chip-role">System Developer</span>
+                            <span class="chip-name">Eng. Omar Hassan</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- فاصل أنيق -->
+            <div class="footer-divider"></div>
+
+            <!-- الجزء السفلي: الحقوق والتقنيات -->
+            <div class="footer-bottom">
+                <div class="copyright-text">
+                    جميع الحقوق محفوظة © 2026 | <strong>DermoAI Platform</strong>
+                </div>
+                <div class="footer-tech-specs">
+                    <span>HAM10000 Dataset</span>
+                    <span class="dot-separator">•</span>
+                    <span>EfficientNet Model</span>
+                    <span class="dot-separator">•</span>
+                    <span>Computer Vision System</span>
+                </div>
+            </div>
+
         </div>
     </footer>
-
+    <!-- Pop-up المودرن للتنبيهات السريرية -->
+    <div id="symptomsModal" class="custom-modal-overlay" style="display: none;">
+        <div class="custom-modal-card">
+            <div id="modalIcon" class="modal-icon warning">⚠️</div>
+            <h3 id="modalTitle">تحديث التقييم السريري</h3>
+            <p id="modalBody">تم تعديل أوزان الأحتمالات بناءً على الأعراض المرفقة.</p>
+            <div id="modalDetails" class="modal-details-box"></div>
+            <button class="btn-modal-close" onclick="closeSymptomsModal()">حسناً، فهمت</button>
+        </div>
+    </div>
     <script>
-        const previewImage = () => {
+        // ==================== 1. دالة معاينة الصورة فور اختيارها ====================
+        function previewImage() {
+            console.log("تم تفعيل دالة previewImage..."); // للمراقبة في Console
+
             const fileInput = document.getElementById('imageInput');
             const preview = document.getElementById('preview');
-            document.getElementById('resultsBox').style.display = 'none';
-            // حط السطور دي تحت كود عرض الصورة الأساسية
-            const pdfImage = document.getElementById('pdf-image');
-            // لو المتغير بتاع الصورة المرفوعة اسمه file مثلاً، سيب السطر ده زي ما هو:
-            pdfImage.src = URL.createObjectURL(fileInput.files[0]);
-            pdfImage.style.display = 'inline-block';
+            const previewWrapper = document.querySelector('.image-preview-wrapper');
+
+            if (!fileInput) {
+                console.error("خطأ: لم يتم العثور على عنصر imageInput في الـ HTML!");
+                return;
+            }
+
+            if (!preview) {
+                console.error("خطأ: لم يتم العثور على عنصر المعاينة preview في الـ HTML!");
+                return;
+            }
 
             if (fileInput.files && fileInput.files[0]) {
+                const file = fileInput.files[0];
+                console.log("الملف المختار:", file.name, "بصيغة:", file.type);
+
                 const reader = new FileReader();
-                reader.onload = (e) => {
+
+                reader.onload = function (e) {
+                    // تحديث مصدر الصورة وعرضها
                     preview.src = e.target.result;
                     preview.style.display = 'block';
-                }
-                reader.readAsDataURL(fileInput.files[0]);
-            }
-        };
 
+                    // إظهار الحاوية بأكملها إن وجدت
+                    if (previewWrapper) {
+                        previewWrapper.style.display = 'block';
+                    }
+
+                    console.log("تمت المعاينة بنجاح وظهرت الصورة!");
+                };
+
+                reader.onerror = function (err) {
+                    console.error("خطأ أثناء قراءة الملف المرفوع:", err);
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                console.warn("تنبيه: تم استدعاء الدالة ولكن لا يوجد ملف تم اختياره.");
+            }
+        }
+
+        // ==================== 2. دالة إرسال وتحليل الصورة السريعة ====================
         async function uploadImage() {
+            console.log("بدء عملية تحليل الصورة...");
+
             const fileInput = document.getElementById('imageInput');
             const loader = document.getElementById('loader');
-            const resultsBox = document.getElementById('resultsBox');
+            const resultsBox = document.getElementById('resultsBox') || document.getElementById('report-content');
+            const placeholderState = document.getElementById('placeholderState');
             const progressList = document.getElementById('progressList');
 
-            if (fileInput.files.length === 0) {
-                alert("الرجاء اختيار صورة أولاً");
+            if (!fileInput || !fileInput.files || fileInput.files.length === 0) {
+                alert("الرجاء اختيار صورة أولاً من جهازك أو التقاطها!");
                 return;
             }
 
             const formData = new FormData();
             formData.append('file', fileInput.files[0]);
 
-            resultsBox.style.display = 'none';
-            loader.style.display = 'block';
+            if (resultsBox) resultsBox.style.display = 'none';
+            if (loader) loader.style.display = 'block';
 
             try {
-                const response = await fetch('/predict', { method: 'POST', body: formData });
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error(`خطأ في السيرفر: ${response.status}`);
+                }
+
                 const data = await response.json();
-                loader.style.display = 'none';
+                console.log("النتائج الواردة من السيرفر:", data);
 
                 if (data.error) {
                     alert(data.error);
                     return;
                 }
 
-                // عرض النتيجة الرئيسية
-                // عرض النتيجة الرئيسية
-                const top = data.results[0];
-                document.getElementById('topName').innerText = `التشخيص المرجح: ${top.name} (${top.confidence}%)`;
-                document.getElementById('topDesc').innerText = top.desc;
+                // عرض النتيجة الرئيسية والخطورة
+                const results = data.results || data.probabilities;
+                const top = results ? results[0] : null;
+                if (results) window.originalResults = JSON.parse(JSON.stringify(results));
+                if (top) {
+                    const topNameEl = document.getElementById('topName');
+                    const topDescEl = document.getElementById('topDesc');
 
-                // 🟢 ضيف السطر ده هنا للتحكم في شارة الخطورة الملونة
-                updateRiskBadge(top.name);
-                // عرض أشرطة التقدم لأعلى 3 احتمالات
-                progressList.innerHTML = '';
-                data.results.forEach((item, index) => {
-                    const color = index === 0 ? '#28a745' : '#007bff';
-                    progressList.innerHTML += `
-                        <div class="progress-item">
-                            <div class="progress-label">
-                                <span>${item.name}</span>
-                                <span>${item.confidence}%</span>
-                            </div>
-                            <div class="progress-bar-bg">
-                                <div class="progress-bar-fill" style="width: ${item.confidence}%; background: ${color};"></div>
-                            </div>
-                        </div>
-                    `;
-                });
+                    if (topNameEl) {
+                        const confidenceVal = top.confidence || top.percent || 0;
+                        const nameVal = top.name || data.prediction || 'تشخيص مبدئي';
+                        topNameEl.innerText = `${nameVal} (${confidenceVal}%)`;
 
-                resultsBox.style.display = 'block';
-                document.getElementById('pdfButtonContainer').style.display = 'block';
-                document.getElementById('placeholderState').style.display = 'none';
-                // --- كود الإرشادات الطبية ---
-                // القاموس الطبي الشامل لكل مرض
-                const medicalDatabase = {
-                    'NV': {
-                        advice: 'مراقبة الشامة بانتظام وملاحظة أي تغير في الحجم أو اللون.',
-                        tests: [
-                            'فحص بالمناظير الجلدية (Dermoscopy) لدى الطبيب المختص.',
-                            'المتابعة الدورية كل 6 إلى 12 شهراً.'
-                        ],
-                        meds: [
-                            'استخدام واقي شمس واسع الطيف (SPF 50+) للوقاية.',
-                            'مرطبات ملطفة للبشرة (Emollients) عند وجود جفاف.'
-                        ]
-                    },
-                    'MEL': {
-                        advice: 'حالة تتطلب العرض الفوري والعاجل على طبيب أورام وجلدية.',
-                        tests: [
-                            'خزعة استئصالية (Excisional Biopsy) لتحليل النسيج.',
-                            'فحص دقيق بالمجهر الجلدي (Dermoscopy).'
-                        ],
-                        meds: [
-                            '⚠️ يمنع استخدام أي مراهم موضعية بدون استشارة الطبيب.',
-                            'العلاج يتحدد حصراً بعد نتيجة الخزعة (جراحي أو موجه).'
-                        ]
-                    },
-                    'BKL': {
-                        advice: 'آفة حميدة غالباً ولا تشكل خطورة، يمكن متابعتها.',
-                        tests: [
-                            'فحص سريري مباشر وفحص الفلورسنت عند الحاجة.',
-                            'خزعة جزيئية فقط في حال التباسها مع أورام أخرى.'
-                        ],
-                        meds: [
-                            'مراهم مرطبة وملطفة للجلد.',
-                            'مراهم مقشرة خفيفة تحتوي على (Salicylic Acid) تحت إشراف طبي.'
-                        ]
-                    },
-                    'BCC': {
-                        advice: 'ورم جلدي يستوجب التقييم الطبي لتحديد الخطة العلاجية.',
-                        tests: [
-                            'خزعة جلدية تأكيدية (Punch or Shave Biopsy).',
-                            'تقييم حواف الآفة السريرية.'
-                        ],
-                        meds: [
-                            'كريمات مناعية موضعية مثل (Imiquimod cream) بوصفة طبية فقط.',
-                            'استخدام واقيات الشمس بانتظام لحماية المناطق المحيطة.'
-                        ]
-                    },
-                    'AKIEC': {
-                        advice: 'تغيرات جلدية ما قبل سرطانية تحتاج علاجاً لمنع تطورها.',
-                        tests: [
-                            'فحص الجلد المجهري (Dermoscopic Assessment).',
-                            'خزعة من الأنسجة لتأكيد درجة التغير.'
-                        ],
-                        meds: [
-                            'جل موضعي مضاد للالتهاب مثل (Diclofenac gel) باستشارة طبية.',
-                            'كريمات الفلورويوراسيل (5-FU cream) تحت إشراف طبي مباشر.',
-                            'واقي شمس قوي وتغطية المنطقة المصابة.'
-                        ]
-                    },
-                    'VASC': {
-                        advice: 'آفات وعائية حميدة في الأوعية الدموية الجلدية.',
-                        tests: [
-                            'فحص الانضغاط الزجاجي (Diascopy Test).',
-                            'فحص الأوعية بالمجهر الجلدي.'
-                        ],
-                        meds: [
-                            'مراهم ملطفة ومضادة للحكة الخفيفة.',
-                            'تجنب الفرك أو الحك لمنع حدوث نزيف سطحي.'
-                        ]
-                    },
-                    'DF': {
-                        advice: 'عقدة ليفية حميدة وشائعة لا تتطلب القلق.',
-                        tests: [
-                            'فحص الانقراض السريري (Pinch Test).',
-                            'تأكيد تشخيصي بالمجهر الجلدي.'
-                        ],
-                        meds: [
-                            'كريمات مرطبة للبشرة.',
-                            'لا تتطلب مراهم علاجية إلا إذا كانت تسبب حكة أو ألم.'
-                        ]
+                        // 👇 ضيف السطر ده هنا تحت topNameEl.innerText مباشرة
+                        if (typeof updateMedicalInfo === 'function') updateMedicalInfo(nameVal);
                     }
-                };
 
-                // --- كود عرض البيانات في التقرير (يضاف داخل uploadImage بعد الحصول على النتيجة) ---
-                let currentInfo = medicalDatabase['NV']; // افتراضي
-
-                for (const key of Object.keys(medicalDatabase)) {
-                    if (top.name.includes(key)) {
-                        currentInfo = medicalDatabase[key];
-                        break;
+                    if (topDescEl) {
+                        topDescEl.innerText = top.desc || data.description || 'تم التحليل بواسطة نموذج EfficientNet.';
                     }
+
+                    // تحديث الشارات والاستبيان بأمان
+                    if (typeof updateRiskBadge === 'function') updateRiskBadge(top.name || data.risk_level);
+                    if (typeof showSymptomsSection === 'function') showSymptomsSection(results);
                 }
 
-                // 1. عرض الإرشادات
-                document.getElementById('advice-list').innerHTML = `<li>${currentInfo.advice}</li>`;
-                document.getElementById('advice-section').style.display = 'block';
+                // بناء أشرطة التقدم للاحتمالات
+                if (progressList && results) {
+                    progressList.innerHTML = '';
+                    results.forEach((item, index) => {
+                        const color = index === 0 ? '#2563eb' : '#64748b';
+                        const name = item.name || item.class;
+                        const confidence = item.confidence || item.percent;
 
-                // 2. عرض الفحوصات والتحاليل
-                const testsListHtml = currentInfo.tests.map(test => `<li>${test}</li>`).join('');
-                document.getElementById('tests-list').innerHTML = testsListHtml;
-                document.getElementById('tests-section').style.display = 'block';
+                        progressList.innerHTML += `
+                    <div class="progress-item">
+                        <div class="progress-label">
+                            <span>${name}</span>
+                            <span>${confidence}%</span>
+                        </div>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" style="width: ${confidence}%; background: ${color};"></div>
+                        </div>
+                    </div>
+                `;
+                    });
+                }
 
-                // 3. عرض الأدوية والمراهم
-                const medsListHtml = currentInfo.meds.map(med => `<li>${med}</li>`).join('');
-                document.getElementById('meds-list').innerHTML = medsListHtml;
-                document.getElementById('meds-section').style.display = 'block';
+                // إظهار النتائج وإخفاء الانتظار
+                if (resultsBox) resultsBox.style.display = 'block';
+                if (placeholderState) placeholderState.style.display = 'none';
 
-                document.getElementById('advice-list').innerHTML = `<li>${adviceText}</li>`;
-                document.getElementById('advice-section').style.display = 'block';
-                // ---------------------------------
+                const pdfBtnContainer = document.getElementById('pdfButtonContainer') || document.getElementById('downloadPdfBtn');
+                if (pdfBtnContainer) pdfBtnContainer.style.display = 'inline-flex';
 
-            } catch (err) {
-                loader.style.display = 'none';
-                alert("حدث خطأ أثناء الاتصال بالسيرفر");
+            } catch (error) {
+                console.error('فشل في التحليل:', error);
+                alert('حدثت مشكلة أثناء تحليل الصورة. تأكد من تشغيل السيرفر (app.py).');
+            } finally {
+                if (loader) loader.style.display = 'none';
             }
         }
-        const generatePDF = () => {
-            // السطر السحري: بيطلع الصفحة لفوق خالص قبل التحويل عشان مفيش حاجة تتقص أو تطلع فاضية
+
+        // --- كود الإرشادات الطبية ---
+        // القاموس الطبي الشامل لكل مرض
+        const medicalDatabase = {
+            'NV': {
+                advice: 'مراقبة الشامة بانتظام وملاحظة أي تغير في الحجم أو اللون.',
+                tests: [
+                    'فحص بالمناظير الجلدية (Dermoscopy) لدى الطبيب المختص.',
+                    'المتابعة الدورية كل 6 إلى 12 شهراً.'
+                ],
+                meds: [
+                    'استخدام واقي شمس واسع الطيف (SPF 50+) للوقاية.',
+                    'مرطبات ملطفة للبشرة (Emollients) عند وجود جفاف.'
+                ]
+            },
+            'MEL': {
+                advice: 'حالة تتطلب العرض الفوري والعاجل على طبيب أورام وجلدية.',
+                tests: [
+                    'خزعة استئصالية (Excisional Biopsy) لتحليل النسيج.',
+                    'فحص دقيق بالمجهر الجلدي (Dermoscopy).'
+                ],
+                meds: [
+                    '⚠️ يمنع استخدام أي مراهم موضعية بدون استشارة الطبيب.',
+                    'العلاج يتحدد حصراً بعد نتيجة الخزعة (جراحي أو موجه).'
+                ]
+            },
+            'BKL': {
+                advice: 'آفة حميدة غالباً ولا تشكل خطورة، يمكن متابعتها.',
+                tests: [
+                    'فحص سريري مباشر وفحص الفلورسنت عند الحاجة.',
+                    'خزعة جزيئية فقط في حال التباسها مع أورام أخرى.'
+                ],
+                meds: [
+                    'مراهم مرطبة وملطفة للجلد.',
+                    'مراهم مقشرة خفيفة تحتوي على (Salicylic Acid) تحت إشراف طبي.'
+                ]
+            },
+            'BCC': {
+                advice: 'ورم جلدي يستوجب التقييم الطبي لتحديد الخطة العلاجية.',
+                tests: [
+                    'خزعة جلدية تأكيدية (Punch or Shave Biopsy).',
+                    'تقييم حواف الآفة السريرية.'
+                ],
+                meds: [
+                    'كريمات مناعية موضعية مثل (Imiquimod cream) بوصفة طبية فقط.',
+                    'استخدام واقيات الشمس بانتظام لحماية المناطق المحيطة.'
+                ]
+            },
+            'AKIEC': {
+                advice: 'تغيرات جلدية ما قبل سرطانية تحتاج علاجاً لمنع تطورها.',
+                tests: [
+                    'فحص الجلد المجهري (Dermoscopic Assessment).',
+                    'خزعة من الأنسجة لتأكيد درجة التغير.'
+                ],
+                meds: [
+                    'جل موضعي مضاد للالتهاب مثل (Diclofenac gel) باستشارة طبية.',
+                    'كريمات الفلورويوراسيل (5-FU cream) تحت إشراف طبي مباشر.',
+                    'واقي شمس قوي وتغطية المنطقة المصابة.'
+                ]
+            },
+            'VASC': {
+                advice: 'آفات وعائية حميدة في الأوعية الدموية الجلدية.',
+                tests: [
+                    'فحص الانضغاط الزجاجي (Diascopy Test).',
+                    'فحص الأوعية بالمجهر الجلدي.'
+                ],
+                meds: [
+                    'مراهم ملطفة ومضادة للحكة الخفيفة.',
+                    'تجنب الفرك أو الحك لمنع حدوث نزيف سطحي.'
+                ]
+            },
+            'DF': {
+                advice: 'عقدة ليفية حميدة وشائعة لا تتطلب القلق.',
+                tests: [
+                    'فحص الانقراض السريري (Pinch Test).',
+                    'تأكيد تشخيصي بالمجهر الجلدي.'
+                ],
+                meds: [
+                    'كريمات مرطبة للبشرة.',
+                    'لا تتطلب مراهم علاجية إلا إذا كانت تسبب حكة أو ألم.'
+                ]
+            }
+        };
+
+        // --- كود عرض البيانات في التقرير (يضاف داخل uploadImage بعد الحصول على النتيجة) ---
+        // --- (كود عرض البيانات في التقرير بعد الحصول على النتيجة) ---
+        // --- تحديث الإرشادات والبيانات الطبية بناءً على المرض المكتشف ---
+        // --- تحديث الإرشادات والبيانات الطبية المضمنة بحماية فائقة ---
+        // --- تحديث الإرشادات والبيانات الطبية المضمنة بحماية فائقة ---
+        // --- تحديث الإرشادات والبيانات الطبية المضمنة بحماية فائقة ---
+        // --- تحديث الإرشادات والبيانات الطبية الذكي (دعم العربي والإنجليزي) ---
+        // --- تحديث الإرشادات والبيانات الطبية المباشر من الشاشة ---
+        try {
+            // قراءة اسم المرض المكتوب بالفعل في عنوان التقرير بالصفحة
+            const topNameEl = document.getElementById('topName');
+            const rawText = topNameEl ? topNameEl.innerText.toUpperCase() : '';
+
+            console.log("النص الظاهر في التقرير حالياً:", rawText);
+
+            let targetKey = 'NV'; // الافتراضي
+
+            if (rawText.includes('VASC') || rawText.includes('وعائية') || rawText.includes('VASCULAR')) {
+                targetKey = 'VASC';
+            } else if (rawText.includes('BCC') || rawText.includes('قاعدية') || rawText.includes('BASAL')) {
+                targetKey = 'BCC';
+            } else if (rawText.includes('MEL') || rawText.includes('ميلانوما') || rawText.includes('MELANOMA')) {
+                targetKey = 'MEL';
+            } else if (rawText.includes('BKL') || rawText.includes('تقران') || rawText.includes('تكران') || rawText.includes('KERATOSIS')) {
+                targetKey = 'BKL';
+            } else if (rawText.includes('AKIEC') || rawText.includes('سعفي') || rawText.includes('ACTINIC')) {
+                targetKey = 'AKIEC';
+            } else if (rawText.includes('DF') || rawText.includes('ليفي') || rawText.includes('DERMATOFIBROMA')) {
+                targetKey = 'DF';
+            } else if (rawText.includes('NV') || rawText.includes('شامة') || rawText.includes('NEVUS')) {
+                targetKey = 'NV';
+            }
+
+            console.log("مفتاح المرض المستهدف للبيانات الطبية:", targetKey);
+
+            const currentInfo = medicalDatabase[targetKey] || medicalDatabase['NV'] || {};
+
+            // 1. عرض الإرشادات
+            const adviceList = document.getElementById('advice-list');
+            const adviceSection = document.getElementById('advice-section');
+            if (adviceList && adviceSection) {
+                const adviceArr = Array.isArray(currentInfo.advice) ? currentInfo.advice : [currentInfo.advice || 'مراقبة الإصابة بانتظام واستشارة الطبيب.'];
+                adviceList.innerHTML = adviceArr.map(item => `<li>${item}</li>`).join('');
+                adviceSection.style.display = 'block';
+            }
+
+            // 2. عرض الفحوصات والتحاليل
+            const testsList = document.getElementById('tests-list');
+            const testsSection = document.getElementById('tests-section');
+            if (testsList && testsSection) {
+                const testsArr = Array.isArray(currentInfo.tests) ? currentInfo.tests : [currentInfo.tests || 'فحص بالمناظير الجلدية (Dermoscopy).'];
+                testsList.innerHTML = testsArr.map(item => `<li>${item}</li>`).join('');
+                testsSection.style.display = 'block';
+            }
+
+            // 3. عرض العلاجات والمراهم
+            const medsList = document.getElementById('meds-list');
+            const medsSection = document.getElementById('meds-section');
+            if (medsList && medsSection) {
+                const medsArr = Array.isArray(currentInfo.meds) ? currentInfo.meds : [currentInfo.meds || 'استخدام مرطبات وواقي شمس عند الحاجة.'];
+                medsList.innerHTML = medsArr.map(item => `<li>${item}</li>`).join('');
+                medsSection.style.display = 'block';
+            }
+
+        } catch (err) {
+            console.error("خطأ أثناء تحديث البيانات الطبية:", err);
+        }
+        // --- دالة توليد تقرير PDF نظيف واحترافي ---
+        const generatePDF = async () => {
+            // 1. التمرير لأعلى الصفحة لضمان التقاط كامل المحتوى
             window.scrollTo(0, 0);
 
             const reportElement = document.getElementById('report-content');
+            if (!reportElement) {
+                alert("عنصر التقرير غير موجود!");
+                return;
+            }
 
+            // 2. تحديد العناصر التي يجب إخفاؤها مؤقتاً أثناء التصدير (الأزرار والاستبيانات التفاعلية)
+            const elementsToHide = document.querySelectorAll('#pdfButtonContainer, .btn-reevaluate, .no-print, button');
+            elementsToHide.forEach(el => el.classList.add('no-pdf'));
+
+            // 3. إعدادات html2pdf العالية الجودة لمنع تفكك الخطوط والعناوين
             const options = {
-                margin: 0.2,
-                filename: 'Skin_Disease_Report.pdf',
-                image: { type: 'jpeg', quality: 1.0 },
-                html2canvas: { scale: 2, useCORS: true }, // شلنا الإعدادات اللي عملت الشاشة البيضاء
-                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+                margin: [0.3, 0.3, 0.3, 0.3], // هامش مناسب للـ A4 (بالبوصة)
+                filename: `DermoAI_Report_${new Date().toISOString().slice(0, 10)}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: {
+                    scale: 2,             // زيادة الجودة ووضوح النصوص العربية
+                    useCORS: true,        // السماح بتحميل الصور الخارجية والخطوط
+                    letterRendering: true, // إصلاح تباعد وتفكك الحروف العربية
+                    scrollX: 0,
+                    scrollY: 0
+                },
+                jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] } // منع قطع الكروت في منتصف الصفحة
             };
 
-            // أمر التحويل
-            html2pdf().set(options).from(reportElement).save();
+            try {
+                // إظهار مؤشر تحكم أو تنبيه بسيط للمستخدم
+                console.log("جاري إنشاء التقرير...");
+
+                // تنفيذ التصدير
+                await html2pdf().set(options).from(reportElement).save();
+
+            } catch (err) {
+                console.error("خطأ أثناء إنشاء الـ PDF:", err);
+                alert("حدث خطأ أثناء تصدير التقرير، يرجى المحاولة مرة أخرى.");
+            } finally {
+                // 4. إعادة إظهار جميع الأزرار والعناصر التفاعلية كما كانت
+                elementsToHide.forEach(el => el.classList.remove('no-pdf'));
+            }
         };
         let stream = null;
 
@@ -1310,6 +2801,282 @@
             riskBadge.className = `risk-badge risk-${currentRisk.level}`;
             riskBadge.innerText = currentLang === 'ar' ? currentRisk.textAr : currentRisk.textEn;
             riskBadge.style.display = 'flex';
+        }
+        let rawModelResults = []; // لتخزين نتائج الموديل الأصلية
+
+        // 1. إظهار قسم الأسئلة بعد التحليل
+        function showSymptomsSection(results) {
+            rawModelResults = JSON.parse(JSON.stringify(results)); // حفظ نسخة من النتائج
+            const symptomsSec = document.getElementById('symptomsSection');
+            if (symptomsSec) symptomsSec.style.display = 'block';
+        }
+
+        // 2. إعادة حساب النسب بناءً على إجابات الأعراض
+        function refineDiagnosis() {
+            if (!rawModelResults || rawModelResults.length === 0) return;
+
+            const form = document.getElementById('symptomsForm');
+            const bleeding = form.q_bleeding.value === 'yes';
+            const itching = form.q_itching.value === 'yes';
+            const growth = form.q_growth.value === 'yes';
+
+            // عمل نسخة لتحديث النسب
+            let adjustedResults = rawModelResults.map(item => ({ ...item }));
+
+            adjustedResults.forEach(item => {
+                let bonus = 0;
+
+                // قواعد ترجيح الخطر والأعراض (Symptom Scoring Rules)
+                if (item.name.includes('MEL') || item.name.includes('BCC')) { // أورام خبيثة
+                    if (bleeding) bonus += 12;
+                    if (growth) bonus += 15;
+                    if (itching) bonus += 5;
+                } else if (item.name.includes('AKIEC')) { // ما قبل سرطاني
+                    if (growth) bonus += 10;
+                    if (itching) bonus += 8;
+                } else if (item.name.includes('NV') || item.name.includes('BKL')) { // حميد
+                    if (!bleeding && !growth && !itching) bonus += 10; // استقرار الأعراض يدعم الحالة الحميدة
+                    if (bleeding || growth) bonus -= 10;
+                }
+
+                item.confidence = Math.min(Math.max(parseFloat(item.confidence) + bonus, 1), 99).toFixed(2);
+            });
+
+            // إعادة ترتيب الأحتمالات حسب النسب الجديدة
+            adjustedResults.sort((a, b) => b.confidence - a.confidence);
+
+            // إعادة عرض الأشرطة المحدثة
+            renderProgressBars(adjustedResults);
+
+            // تحديث النتيجة الرئيسية والشارة
+            const top = adjustedResults[0];
+            document.getElementById('topName').innerText = `التشخيص المرجح (بعد دمج الأعراض): ${top.name} (${top.confidence}%)`;
+            document.getElementById('topDesc').innerText = top.desc;
+
+            if (typeof updateRiskBadge === 'function') {
+                updateRiskBadge(top.name);
+            }
+
+            alert('تم إعادة تقييم التقرير وتحديث النسب بناءً على الأعراض السريرية المرفقة!');
+        }
+
+        // دالة مساعدة لرسم الأشرطة
+        function renderProgressBars(resultsList) {
+            const progressList = document.getElementById('progressList');
+            progressList.innerHTML = '';
+
+            resultsList.slice(0, 3).forEach(item => {
+                let color = '#3b82f6';
+                if (item.name.includes('MEL') || item.name.includes('BCC')) color = '#ef4444';
+                else if (item.name.includes('NV') || item.name.includes('BKL')) color = '#10b981';
+
+                progressList.innerHTML += `
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span>${item.name}</span>
+                    <span>${item.confidence}%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: ${item.confidence}%; background: ${color};"></div>
+                </div>
+            </div>
+        `;
+            });
+        }
+        // --- دالة تحديث الإرشادات والبيانات الطبية المضمونة ---
+        function updateMedicalInfo(diseaseName) {
+            if (!diseaseName) return;
+
+            const rawText = diseaseName.toString().toUpperCase();
+            console.log("جاري تحديث البيانات الطبية فوراً لـ:", rawText);
+
+            let targetKey = 'NV';
+
+            if (rawText.includes('VASC') || rawText.includes('وعائية') || rawText.includes('VASCULAR')) {
+                targetKey = 'VASC';
+            } else if (rawText.includes('BCC') || rawText.includes('قاعدية') || rawText.includes('BASAL')) {
+                targetKey = 'BCC';
+            } else if (rawText.includes('MEL') || rawText.includes('ميلانوما') || rawText.includes('MELANOMA')) {
+                targetKey = 'MEL';
+            } else if (rawText.includes('BKL') || rawText.includes('تقران') || rawText.includes('تكران') || rawText.includes('KERATOSIS')) {
+                targetKey = 'BKL';
+            } else if (rawText.includes('AKIEC') || rawText.includes('سعفي') || rawText.includes('ACTINIC')) {
+                targetKey = 'AKIEC';
+            } else if (rawText.includes('DF') || rawText.includes('ليفي') || rawText.includes('DERMATOFIBROMA')) {
+                targetKey = 'DF';
+            } else if (rawText.includes('NV') || rawText.includes('شامة') || rawText.includes('NEVUS')) {
+                targetKey = 'NV';
+            }
+
+            const currentInfo = medicalDatabase[targetKey] || medicalDatabase['NV'] || {};
+
+            // 1. عرض الإرشادات
+            const adviceList = document.getElementById('advice-list');
+            const adviceSection = document.getElementById('advice-section');
+            if (adviceList && adviceSection) {
+                const adviceArr = Array.isArray(currentInfo.advice) ? currentInfo.advice : [currentInfo.advice || 'مراقبة الإصابة بانتظام واستشارة الطبيب.'];
+                adviceList.innerHTML = adviceArr.map(item => `<li>${item}</li>`).join('');
+                adviceSection.style.display = 'block';
+            }
+
+            // 2. عرض الفحوصات والتحاليل
+            const testsList = document.getElementById('tests-list');
+            const testsSection = document.getElementById('tests-section');
+            if (testsList && testsSection) {
+                const testsArr = Array.isArray(currentInfo.tests) ? currentInfo.tests : [currentInfo.tests || 'فحص بالمناظير الجلدية (Dermoscopy).'];
+                testsList.innerHTML = testsArr.map(item => `<li>${item}</li>`).join('');
+                testsSection.style.display = 'block';
+            }
+
+            // 3. عرض العلاجات والمراهم
+            const medsList = document.getElementById('meds-list');
+            const medsSection = document.getElementById('meds-section');
+            if (medsList && medsSection) {
+                const medsArr = Array.isArray(currentInfo.meds) ? currentInfo.meds : [currentInfo.meds || 'استخدام مرطبات وواقي شمس عند الحاجة.'];
+                medsList.innerHTML = medsArr.map(item => `<li>${item}</li>`).join('');
+                medsSection.style.display = 'block';
+            }
+        }
+        // --- دالة إعادة تقييم النسب وإظهار الـ Pop-up ---
+        function reevaluateSymptoms() {
+            if (!window.originalResults || window.originalResults.length === 0) {
+                showCustomModal("تنبيه", "يرجى رفع صورة وتحليلها أولاً قبل إعادة التقييم.", "info");
+                return;
+            }
+
+            // 1. قراءة الإجابات
+            const q1 = document.querySelector('input[name="q1"]:checked')?.value === 'yes';
+            const q2 = document.querySelector('input[name="q2"]:checked')?.value === 'yes';
+            const q3 = document.querySelector('input[name="q3"]:checked')?.value === 'yes';
+
+            const yesCount = [q1, q2, q3].filter(Boolean).length;
+
+            // 2. نسخ النتائج الأصلية للبدء في تعديل الأوزان
+            let adjustedResults = JSON.parse(JSON.stringify(window.originalResults));
+
+            // الأمراض ذات الخطورة العالية التي تزداد أوزانها عند وجود أعراض
+            const highRiskCodes = ['MEL', 'BCC', 'AKIEC'];
+            const boostFactor = yesCount * 8.5; // زيادة 8.5% لكل عرض خطير
+
+            if (yesCount > 0) {
+                adjustedResults.forEach(item => {
+                    const itemCode = (item.name || item.class || '').toUpperCase();
+                    const isHighRisk = highRiskCodes.some(code => itemCode.includes(code));
+
+                    if (isHighRisk) {
+                        item.confidence = (parseFloat(item.confidence) || parseFloat(item.percent) || 0) + boostFactor;
+                    }
+                });
+
+                // إعادة ضبط المجموع إلى 100% (Normalizing)
+                const totalSum = adjustedResults.reduce((sum, item) => sum + (parseFloat(item.confidence) || parseFloat(item.percent) || 0), 0);
+                adjustedResults.forEach(item => {
+                    let currentVal = (parseFloat(item.confidence) || parseFloat(item.percent) || 0);
+                    item.confidence = ((currentVal / totalSum) * 100).toFixed(2);
+                    item.percent = item.confidence;
+                });
+
+                // إعادة ترتيب الأحتمالات من الأعلى للأقل
+                adjustedResults.sort((a, b) => parseFloat(b.confidence) - parseFloat(a.confidence));
+            }
+
+            // 3. إعادة رسم أشرطة التقدم بالواجهة النسبية الجديدة
+            renderProgressBars(adjustedResults);
+
+            // 4. تحديث العنوان الرئيسي بأول نتيجة
+            const top = adjustedResults[0];
+            const topNameEl = document.getElementById('topName');
+            if (topNameEl && top) {
+                const nameVal = top.name || top.class_name || 'تشخيص مبدئي';
+                topNameEl.innerText = `${nameVal} (${top.confidence}%) [معدل سريرياً]`;
+                if (typeof updateMedicalInfo === 'function') updateMedicalInfo(nameVal);
+            }
+
+            // 5. إظهار الـ Pop-up بالتفاصيل
+            if (yesCount >= 2) {
+                showCustomModal(
+                    "⚠️ تنبيه سريري عالي الخطورة",
+                    "وجود أكثر من عرض أحمر (نزيف أو تغير سريع) أدى إلى رفع الوزن النسبي لاحتمالات الآفات الخبيثة.",
+                    `تم إضافة زيادة قدرها +${(boostFactor).toFixed(1)}% لأوزان الخطورة. يُوصى بفحص عاجل بالمنظار الجلدي (Dermoscopy).`,
+                    "warning"
+                );
+            } else if (yesCount === 1) {
+                showCustomModal(
+                    "ℹ️ تعديل طفيف للأحتمالات",
+                    "تم تعديل الأوزان النسبية بنسبة طفيفة بناءً على العرض السريري المرفق.",
+                    "وجود عرض واحد يتطلب المتابعة الدورية دون دواعي للقلق الشديد.",
+                    "success"
+                );
+            } else {
+                showCustomModal(
+                    "✅ لم تتغير الأحتمالات",
+                    "تمت إعادة التقييم بحسب نتائج نموذج الذكاء الاصطناعي الأصلية نظراً لعدم وجود أعراض إضافية.",
+                    "",
+                    "success"
+                );
+            }
+        }
+
+        // دالة رسم الأشرطة المحدثة
+        function renderProgressBars(results) {
+            const progressList = document.getElementById('progressList');
+            if (!progressList || !results) return;
+
+            progressList.innerHTML = '';
+            results.forEach((item, index) => {
+                const color = index === 0 ? '#2563eb' : '#64748b';
+                const name = item.name || item.class;
+                const confidence = item.confidence || item.percent;
+
+                progressList.innerHTML += `
+            <div class="progress-item">
+                <div class="progress-label">
+                    <span>${name}</span>
+                    <span>${confidence}%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: ${confidence}%; background: ${color};"></div>
+                </div>
+            </div>
+        `;
+            });
+        }
+
+        // دالتان للتحكم في فتح وإغلاق الـ Pop-up
+        function showCustomModal(title, bodyText, detailsText, type) {
+            const modal = document.getElementById('symptomsModal');
+            const icon = document.getElementById('modalIcon');
+
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBody').innerText = bodyText;
+
+            const detailsBox = document.getElementById('modalDetails');
+            if (detailsText) {
+                detailsBox.innerText = detailsText;
+                detailsBox.style.display = 'block';
+            } else {
+                detailsBox.style.display = 'none';
+            }
+
+            if (type === 'warning') {
+                icon.className = 'modal-icon warning';
+                icon.innerText = '⚠️';
+            } else {
+                icon.className = 'modal-icon success';
+                icon.innerText = '✅';
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeSymptomsModal() {
+            document.getElementById('symptomsModal').style.display = 'none';
+        }
+        // --- دالة مسح النتائج والبدء من جديد ---
+        // --- دالة مسح النتائج والبدء من جديد بالكامل ---
+        // --- دالة بديل مصفحة ومضمونة 100% لبداية حالة جديدة ---
+        function resetInterface() {
+            window.location.reload();
         }
     </script>
 </body>
