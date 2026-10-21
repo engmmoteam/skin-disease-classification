@@ -4,6 +4,7 @@ import numpy as np
 import cv2
 import os
 
+    
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -36,22 +37,34 @@ def preprocess_image(image_path):
 @app.route('/')
 def index():
     return render_template('index.html')
-
 @app.route('/predict', methods=['POST'])
 def predict():
     if 'file' not in request.files:
-        return jsonify({'error': 'لم يتم اختيار صورة'})
-    
+        return jsonify({'error': 'لم يتم اختيار صورة'}), 400
+        
     file = request.files['file']
     if file.filename == '':
-        return jsonify({'error': 'اسم الملف فارغ'})
+        return jsonify({'error': 'اسم الملف فارغ'}), 400
 
+    # حفظ الصورة مرة واحدة فقط
     filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(filepath)
 
-    processed_img = preprocess_image(filepath)
-    predictions = model.predict(processed_img)[0]
-    os.remove(filepath)
+    try:
+        # معالجة الصورة والتنبؤ
+        processed_img = preprocess_image(filepath)
+        predictions = model.predict(processed_img)[0]
+        
+        # مسح الصورة بعد ما الموديل يخلص
+        if os.path.exists(filepath):
+            os.remove(filepath)
+            
+    except Exception as e:
+        # في حالة حدوث أي خطأ، نمسح الصورة برضه
+        if os.path.exists(filepath):
+            os.remove(filepath)
+        print(f"Error during prediction: {e}")
+        return jsonify({'error': 'حدث خطأ داخلي أثناء معالجة الصورة.'}), 500
 
     # استخراج أعلى 3 احتمالات
     top3_indices = np.argsort(predictions)[-3:][::-1]
